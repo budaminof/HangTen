@@ -1,7 +1,8 @@
-var app = angular.module('myApp', ['ngAnimate']);
+var app = angular.module('myApp', ['ngAnimate', 'angularMoment', 'ngMessages']);
 
 app.controller('main', function ($scope) {
   $scope.vm = {};
+  $scope.form = {};
 
   $scope.voteUp = function (post) {
     post.votes++;
@@ -15,13 +16,22 @@ app.controller('main', function ($scope) {
     $scope.vm.sort = sortedBy;
   }
 
+  $scope.formSubmit = function (){
+    $scope.form.votes = 0;
+    $scope.form.comments = [];
+    $scope.form.date = new Date();
+
+    $scope.data.push($scope.form);
+    $scope.form= {}
+  }
+
   $scope.data = [
     {
       title:  'Aspen',
       image: 'http://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg',
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Bud Anin",
-      date: new Date("April 4, 2013"),
+      date: new Date("April 29, 2016"),
       votes: 4,
       comments: []
     },
@@ -30,7 +40,7 @@ app.controller('main', function ($scope) {
       image: 'http://im.rediff.com/news/2016/mar/01smith1.jpg',
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Nick MacIntyre",
-      date: new Date("January 6, 2020"),
+      date: new Date("April 24, 2016"),
       votes: 0,
       comments: []
     },
@@ -62,5 +72,13 @@ app.controller('main', function ($scope) {
       comments: []
     }
   ];
-
 })
+
+.controller('timeController', function($scope) {
+  // bind the controller to vm (view-model)
+  $scope.view = {};
+
+  // create a new time variable with the current date
+  $scope.view.time = new Date();
+
+});
