@@ -3,6 +3,13 @@ var app = angular.module('myApp', ['ngAnimate']);
 app.controller('main', function ($scope) {
   $scope.vm = {};
 
+  $scope.clicked = function () {
+  }
+
+  $scope.sort = function (sortedBy) {
+    $scope.vm.sort = sortedBy;
+  }
+
   $scope.data = [
     {
       title:  'Aspen',
@@ -10,7 +17,7 @@ app.controller('main', function ($scope) {
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Bud Anin",
       date: new Date(),
-      votes: 0,
+      votes: 4,
       comments: []
     },
     {
@@ -18,7 +25,7 @@ app.controller('main', function ($scope) {
       image: 'http://im.rediff.com/news/2016/mar/01smith1.jpg',
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Nick MacIntyre",
-      date: new Date(),
+      date: 'Fri Apr 15 2016 19:26:58 GMT-0600 (MDT)',
       votes: 0,
       comments: []
     },
@@ -28,7 +35,7 @@ app.controller('main', function ($scope) {
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Coutrney and Mike",
       date: new Date(),
-      votes: 0,
+      votes: 9,
       comments: []
     }
   ];
