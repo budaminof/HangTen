@@ -103,3 +103,7 @@ nav button {
 .ng-move-stagger {
   animation-delay:  .2s;
 }
+
+.ng-show {
+  animation: flipInY .7s;
+}

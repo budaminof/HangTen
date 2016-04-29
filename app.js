@@ -20,6 +20,7 @@ app.controller('main', function ($scope) {
     console.log(myForm.$valid);
     $scope.form.votes = 0;
     $scope.form.comments = [];
+    $scope.form.show= false;
     $scope.form.date = new Date();
 
     $scope.data.push($scope.form);
@@ -31,6 +32,10 @@ app.controller('main', function ($scope) {
     $scope.myForm.$setUntouched();
   }
 
+  $scope.commentShow = function (post) {
+    post.show = !post.show;
+  }
+
   $scope.data = [
     {
       title:  'Aspen',
@@ -39,7 +44,17 @@ app.controller('main', function ($scope) {
       author: "Bud Anin",
       date: new Date("April 29, 2016"),
       votes: 4,
-      comments: []
+      show: false,
+      comments: [
+        {
+          author: "Lincoln",
+          text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        {
+          author: "Bud",
+          text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }
+      ]
     },
     {
       title:  'Boulder',
@@ -48,7 +63,17 @@ app.controller('main', function ($scope) {
       author: "Nick MacIntyre",
       date: new Date("April 24, 2016"),
       votes: 0,
-      comments: []
+      show: false,
+      comments: [
+        {
+          author: "Mike",
+          text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        {
+          author: "Cooper",
+          text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }
+      ]
     },
     {
       title:  'Tel Aviv',
@@ -57,7 +82,17 @@ app.controller('main', function ($scope) {
       author: "Coutrney and Mike",
       date: new Date("July 5, 2010"),
       votes: 9,
-      comments: []
+      show: false,
+      comments: [
+        {
+          author: "Summer",
+          text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        {
+          author: "Seth",
+          text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }
+      ]
     },
     {
       title:  'New York',
@@ -66,7 +101,17 @@ app.controller('main', function ($scope) {
       author: "Seth the awesome",
       date: new Date("Januray 19, 2006"),
       votes: 9,
-      comments: []
+      show: false,
+      comments: [
+        {
+          author: "Courtney",
+          text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        {
+          author: "Akyuna",
+          text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }
+      ]
     },
     {
       title:  'Denver',
@@ -75,7 +120,13 @@ app.controller('main', function ($scope) {
       author: "Seth the awesome",
       date: new Date("May 12, 2013"),
       votes: 20,
-      comments: []
+      show: false,
+      comments: [
+        {
+          author: "Madeline",
+          text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }
+      ]
     }
   ];
 })
