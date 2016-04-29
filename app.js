@@ -17,13 +17,18 @@ app.controller('main', function ($scope) {
   }
 
   $scope.formSubmit = function (){
+    console.log(myForm.$valid);
     $scope.form.votes = 0;
     $scope.form.comments = [];
     $scope.form.date = new Date();
 
-    console.log($scope.form);
     $scope.data.push($scope.form);
-    $scope.form= {}
+    $scope.form = {}
+  }
+
+  $scope.formClose = function () {
+    $scope.form = {};
+    $scope.myForm.$setUntouched();
   }
 
   $scope.data = [
