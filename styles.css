@@ -1,3 +1,7 @@
-img {
-  height: 100px;
+.author {
+  text-align: right;
+}
+
+.post p {
+  font-size: 1em;
 }

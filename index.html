@@ -45,23 +45,27 @@
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" placeholder="Search" ng-model="search">
         </div>
       </form>
     </div>
   </div>
 </nav>
 
-  <main class="container col-md-10 col-md-offset-1" ng-controller="main">
-    <section ng-repeat="item in data" class="col-md-6 col-md-offset-2">
-      <article class="page-header">
-        <h4 ng-bind="item.title"></h4>
-        <h4>By <span ng-bind="item.author"></span></h4>
-        <p ng-bind="item.description"></p>
-        <img ng-src="{{item.image}}" alt="image">
-        <p ng-bind="item.date | date : 'fullDate' "></p>
-        <p>Votes <span ng-bind="item.votes"></span></p>
-        <p>Comments <span ng-bind="item.comments.length"></span></p>
+  <main class="container-fluid col-md-12" ng-controller="main">
+    <section ng-repeat="item in data | filter : search" class="col-md-10 col-md-offset-1 post">
+      <article class="jumbotron row">
+        <div class="col-md-4 thumbnail">
+          <img ng-src="{{item.image}}" alt="image">
+        </div>
+        <div class="col-md-8">
+          <h4><span ng-bind="item.title"></span> | <span class="glyphicon glyphicon glyphicon-arrow-down" aria-hidden="true"></span><span class="glyphicon glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+
+ <span ng-bind="item.votes"></span></h4>
+          <h5 class="author">By <span ng-bind="item.author"></span></h5>
+          <p ng-bind="item.description"></p>
+          <p><span ng-bind="item.date | date : 'fullDate' "></span> | <span class="glyphicon glyphicon glyphicon glyphicon-comment" aria-hidden="true"></span> Comments <span ng-bind="item.comments.length"></span><span> | Add a comment <span class="glyphicon glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span></span></p>
+        </div>
       </article>
     </section>
   </main>
