@@ -3,7 +3,12 @@ var app = angular.module('myApp', ['ngAnimate']);
 app.controller('main', function ($scope) {
   $scope.vm = {};
 
-  $scope.clicked = function () {
+  $scope.voteUp = function (position) {
+    $scope.data[position].votes++;
+  }
+
+  $scope.voteDown = function (position) {
+    $scope.data[position].votes--;
   }
 
   $scope.sort = function (sortedBy) {

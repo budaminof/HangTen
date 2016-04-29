@@ -59,7 +59,7 @@
           <img ng-src="{{item.image}}" alt="image">
         </div>
         <div class="col-md-8">
-          <h4><span ng-bind="item.title"></span> | <span class="glyphicon glyphicon glyphicon-arrow-down" aria-hidden="true"></span><span ng-click="clicked()" class="glyphicon glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+          <h4><span ng-bind="item.title"></span> | <span ng-click="voteUp($index)" class="glyphicon glyphicon glyphicon-arrow-up" aria-hidden="true"></span> <span ng-click="voteDown($index)" class="glyphicon glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
 
  <span ng-bind="item.votes"></span></h4>
           <h5 class="author">By <span ng-bind="item.author"></span></h5>
