@@ -15,7 +15,7 @@ nav button {
   background: rgb(255, 255, 255);
 }
 
-#myModal {
+#postModal, .comment-modal {
   margin-top: 100px;
 }
 
@@ -54,7 +54,7 @@ nav button {
 }
 
 .post p {
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
 .glyphicon {
@@ -104,6 +104,9 @@ nav button {
   animation-delay:  .2s;
 }
 
-.ng-show {
-  animation: flipInY .7s;
+.ng-hide-add {
+  animation: flipOutX .7s;
+}
+.ng-hide-remove {
+  animation: flipInX .7s;
 }

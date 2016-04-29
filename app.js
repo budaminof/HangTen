@@ -3,6 +3,8 @@ var app = angular.module('myApp', ['ngAnimate', 'angularMoment', 'ngMessages']);
 app.controller('main', function ($scope) {
   $scope.vm = {};
   $scope.form = {};
+  $scope.activePost = {};
+  $scope.comment = {};
 
   $scope.voteUp = function (post) {
     post.votes++;
@@ -17,7 +19,6 @@ app.controller('main', function ($scope) {
   }
 
   $scope.formSubmit = function (){
-    console.log(myForm.$valid);
     $scope.form.votes = 0;
     $scope.form.comments = [];
     $scope.form.show= false;
@@ -34,6 +35,21 @@ app.controller('main', function ($scope) {
 
   $scope.commentShow = function (post) {
     post.show = !post.show;
+  }
+
+  $scope.commentSubmit = function () {
+    $scope.activePost.comments.push($scope.comment);
+    $scope.comment = {};
+    $scope.commentForm.$setUntouched();
+  }
+
+  $scope.commentClose = function () {
+    $scope.comment = {};
+    $scope.commentForm.$setUntouched();
+  }
+
+  $scope.makeAComment = function (post){
+    $scope.activePost = post;
   }
 
   $scope.data = [
@@ -121,12 +137,7 @@ app.controller('main', function ($scope) {
       date: new Date("May 12, 2013"),
       votes: 20,
       show: false,
-      comments: [
-        {
-          author: "Madeline",
-          text: "sunt in culpa qui officia deserunt mollit anim id est laborum."
-        }
-      ]
+      comments: []
     }
   ];
 })
