@@ -1,7 +1,80 @@
+main {
+  margin-top: 80px;
+}
+
+.navbar {
+  background: rgb(185, 255, 226);
+}
+
+.jumbotron {
+  background-color: rgb(185, 255, 226);
+}
+
+nav button {
+  background: rgb(255, 255, 255);
+}
+
+#myModal {
+  margin-top: 100px;
+}
+
+.modal-header{
+  background: rgb(67, 142, 77);
+  color: white;
+}
+
+.modal-backdrop
+{
+    opacity:0.7 !important;
+}
+
+.btnGreen {
+  background: rgb(21, 75, 29);
+  color: white;
+}
+
+.btnGreen:hover {
+  background: rgb(56, 116, 64);
+  color: white;
+}
+
+.btnClose {
+  color: white;
+  background: rgb(89, 89, 89);
+}
+
+.btnClose:hover {
+  color: white;
+  background: rgb(140, 140, 140);
+}
+
 .author {
   text-align: right;
 }
 
 .post p {
   font-size: 1em;
+}
+
+.glyphicon {
+
+ font-size: 1.1em;
+ color: rgb(32, 83, 24);
+ -webkit-touch-callout: none; /* iOS Safari */
+ -webkit-user-select: none;   /* Chrome/Safari/Opera */
+ -khtml-user-select: none;    /* Konqueror */
+ -moz-user-select: none;      /* Firefox */
+ -ms-user-select: none;       /* Internet Explorer/Edge */
+}
+
+.glyphicon:hover, .addPost {
+ cursor: pointer;
+}
+
+.glyphicon-arrow-up:active {
+ color: green;
+}
+
+.glyphicon-arrow-down:active {
+ color: red;
 }
