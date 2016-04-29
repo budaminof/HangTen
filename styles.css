@@ -3,11 +3,12 @@ main {
 }
 
 .navbar {
-  background: rgb(185, 255, 226);
+  background: rgb(209, 233,239);
+  border-bottom: 2px solid black;
 }
 
 .jumbotron {
-  background-color: rgb(185, 255, 226);
+  background-color: rgb(209, 233,239);
 }
 
 nav button {
@@ -59,7 +60,7 @@ nav button {
 .glyphicon {
 
  font-size: 1.1em;
- color: rgb(32, 83, 24);
+ color: rgb(24, 42, 83);
  -webkit-touch-callout: none; /* iOS Safari */
  -webkit-user-select: none;   /* Chrome/Safari/Opera */
  -khtml-user-select: none;    /* Konqueror */
@@ -77,4 +78,28 @@ nav button {
 
 .glyphicon-arrow-down:active {
  color: red;
+}
+
+.ng-enter {
+  animation: zoomInUp .7s;
+}
+
+.ng-leave {
+  animation: zoomOutDown .9s;
+}
+
+.greenVotes {
+  color: green;
+}
+
+.redVotes {
+  color: red;
+}
+
+.ng-move {
+  animation: zoomInUp .7s;
+}
+
+.ng-move-stagger {
+  animation-delay:  .2s;
 }
