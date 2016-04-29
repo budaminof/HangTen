@@ -42,7 +42,7 @@
       <ul class="nav navbar-nav">
         <li>
           <button type="button" class="btn navbar-btn" data-toggle="modal" data-target="#myModal">
-            <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Launch demo modal
+            <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Submit a post
           </button></li>
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
@@ -70,10 +70,10 @@
         <h4 class="modal-title" id="myModalLabel">Add a Post</h4>
       </div>
       <div class="modal-body">
-        <form name="myForm" novalidate ng-submit="formSubmit()">
+        <form name="myForm" novalidate ng-submit="formSubmit() && myForm.$valid">
             <fieldset class="form-group">
             <label>Title</label>
-            <input type="text" class="form-control" name="title" ng-mode="form.name" required ng-minlength="3">
+            <input type="text" class="form-control" name="title" ng-model="form.title" required ng-minlength="1">
             <small class="text-muted">Enter the title of your posting.</small>
             </fieldset>
             <fieldset class="form-group">
@@ -88,12 +88,12 @@
             </fieldset>
             <fieldset class="form-group">
             <label>Author</label>
-            <input type="text" class="form-control" name="author" ng-model="form.author" required ng-minlength="3">
+            <input type="text" class="form-control" name="author" ng-model="form.author" required ng-minlength="1">
             <small class="text-muted">Author of the posting</small>
             </fieldset>
             <div class="modal-footer">
               <button type="button" class="btn btnClose" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btnGreen">Save Post</button>
+              <button type="submit" class="btn btnGreen" data-toggle="modal" data-target="#myModal">Save Post</button>
             </div>
           </form>
       </div>

@@ -21,6 +21,7 @@ app.controller('main', function ($scope) {
     $scope.form.comments = [];
     $scope.form.date = new Date();
 
+    console.log($scope.form);
     $scope.data.push($scope.form);
     $scope.form= {}
   }
