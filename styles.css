@@ -2,6 +2,26 @@ main {
   margin-top: 80px;
 }
 
+#navHeader, #sort {
+  color:black;
+}
+
+#sort {
+  font-size: 1.3em;
+}
+
+#collapsBtn {
+  border: 1px black solid;
+}
+
+#bs-example-navbar-collapse-1 {
+  width: 70%;
+  margin-left: 30px;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover  {
+  background: rgb(209, 233,239);
+}
 .navbar {
   background: rgb(209, 233,239);
   border-bottom: 2px solid black;
@@ -109,4 +129,7 @@ nav button {
 }
 .ng-hide-remove {
   animation: flipInX .7s;
+}
+.ng-hide-remove-stagger {
+  animation-delay: .2s;
 }

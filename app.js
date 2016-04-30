@@ -55,7 +55,7 @@ app.controller('main', function ($scope) {
   $scope.data = [
     {
       title:  'Aspen',
-      image: 'http://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg',
+      image: 'https://media.giphy.com/media/yYSSBtDgbbRzq/giphy.gif',
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Bud Anin",
       date: new Date("April 29, 2016"),
@@ -74,7 +74,7 @@ app.controller('main', function ($scope) {
     },
     {
       title:  'Boulder',
-      image: 'http://im.rediff.com/news/2016/mar/01smith1.jpg',
+      image: 'https://media.giphy.com/media/GdzdVs64GIOFa/giphy.gif',
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Nick MacIntyre",
       date: new Date("April 24, 2016"),
@@ -93,7 +93,7 @@ app.controller('main', function ($scope) {
     },
     {
       title:  'Tel Aviv',
-      image: 'http://www.planwallpaper.com/static/images/beautiful-sunset-images-196063.jpg',
+      image: 'https://media.giphy.com/media/jxhJ8ylaYIPbG/giphy.gif',
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Coutrney and Mike",
       date: new Date("July 5, 2010"),
@@ -112,7 +112,7 @@ app.controller('main', function ($scope) {
     },
     {
       title:  'New York',
-      image: 'http://www.gettyimages.ca/gi-resources/images/Homepage/Category-Creative/UK/UK_Creative_462809583.jpg',
+      image: 'https://media.giphy.com/media/l4Ki7Y9DfsUnvawEg/giphy.gif',
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Seth the awesome",
       date: new Date("Januray 19, 2006"),
@@ -131,7 +131,7 @@ app.controller('main', function ($scope) {
     },
     {
       title:  'Denver',
-      image: 'http://cdn.theatlantic.com/assets/media/img/photo/2015/11/images-from-the-2016-sony-world-pho/s01_130921474920553591/main_900.jpg?1448476701',
+      image: 'https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif',
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Seth the awesome",
       date: new Date("May 12, 2013"),
