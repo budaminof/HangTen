@@ -143,10 +143,7 @@ app.controller('main', function ($scope) {
 })
 
 .controller('timeController', function($scope) {
-  // bind the controller to vm (view-model)
   $scope.view = {};
-
-  // create a new time variable with the current date
   $scope.view.time = new Date();
 
 });

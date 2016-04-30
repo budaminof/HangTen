@@ -2,6 +2,7 @@
 <html lang="en" ng-app="myApp">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -53,9 +54,9 @@
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="sort">Sort By<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a ng-click="sort('-votes')">Votes</a></li>
-              <li><a ng-click="sort('title')">Titles</a></li>
-              <li><a ng-click="sort('date')">Dates</a></li>
+              <li><a ng-click="sort('-votes')">Most Votes</a></li>
+              <li><a ng-click="sort('title')">By Titles</a></li>
+              <li><a ng-click="sort('-date')">Newest</a></li>
             </ul>
           </li>
     </ul>
@@ -165,7 +166,7 @@
             </ng-pluralize>
             ( <span ng-bind="item.comments.length"></span> ) | <span><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="modal" data-target=".comment-modal" ng-click="makeAComment(item)"></span> Add a comment</span></p>
 
-          <div ng-repeat="comment in item.comments" ng-show="item.show">
+          <div class="comments" ng-repeat="comment in item.comments" ng-show="item.show">
             <p><h4 ng-bind="comment.author"></h4><p ng-bind="comment.text"></p></p>
           </div>
 

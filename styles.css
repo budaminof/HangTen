@@ -14,9 +14,12 @@ main {
   border: 1px black solid;
 }
 
-#bs-example-navbar-collapse-1 {
-  width: 70%;
-  margin-left: 30px;
+@media (max-width: 690px) {
+  #bs-example-navbar-collapse-1 {
+    width: 70%;
+    margin-left: 30px;
+  }
+
 }
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover  {
