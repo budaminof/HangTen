@@ -133,7 +133,7 @@
             </fieldset>
             <fieldset class="form-group" ng-class="{'has-error': commentForm.commentBody.$invalid && commentForm.commentBody.$touched, 'has-success': commentForm.commentBody.$valid}">
             <label class="control-label">Comment?</label>
-            <textarea type="text" class="form-control" name="commentBody" ng-model="comment.text" required ng-minlength="3" placeholder="So, what were you thinking?"></textarea>
+            <textarea type="text" class="form-control" name="commentBody" ng-model="comment.text" required placeholder="So, what were you thinking?"></textarea>
             <div ng-messages="commentForm.commentBody.$error" ng-if="commentForm.commentBody.$touched">
                 <p ng-message="required" class="control-label">Some comment is required.</p>
             </div>
@@ -157,14 +157,14 @@
         </div>
         <div class="col-md-8">
           <h4><span ng-bind="item.title"></span> | <span ng-click="voteUp(item)" class="glyphicon  glyphicon-arrow-up" aria-hidden="true"></span> <span ng-click="voteDown(item)" class="glyphicon  glyphicon-arrow-down" aria-hidden="true"></span>
- <span ng-class="{greenVotes: item.votes > 0, redVotes: item.votes <= 0}" ng-bind="item.votes"></span></h4>
+ <span ng-class="{greenVotes: item.votes > 0, redVotes: item.votes < 0}" ng-bind="item.votes"></span></h4>
           <h5 class="author">By <span ng-bind="item.author"></span></h5>
           <p ng-bind="item.description"></p>
-          <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"> </span><span title="{{ item.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}" ng-bind="item.date |  amCalendar"></span> | <span class="glyphicon glyphicon-comment" aria-hidden="true" ng-click="commentShow(item)"></span>
+          <p><span class="glyphicon glyphicon-calendar" id="notClickable" aria-hidden="true"> </span><span title="{{ item.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}" ng-bind="item.date |  amCalendar"></span> | <span class="clickable" aria-hidden="true" ng-click="commentShow(item)"><span class="glyphicon glyphicon-comment"></span>
             <ng-pluralize count="item.comments.length"
               when="{'1': 'View Comment','other': 'View Comments'}">
             </ng-pluralize>
-            ( <span ng-bind="item.comments.length"></span> ) | <span><span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="modal" data-target=".comment-modal" ng-click="makeAComment(item)"></span> Add a comment</span></p>
+            ( <span ng-bind="item.comments.length"></span> ) </span> | <span class="clickable" ng-click="makeAComment(item)" aria-hidden="true" data-toggle="modal" data-target=".comment-modal"><span class="glyphicon glyphicon-pencil"></span> Add a comment</span></p>
 
           <div class="comments" ng-repeat="comment in item.comments" ng-show="item.show">
             <p><h4 ng-bind="comment.author"></h4><p ng-bind="comment.text"></p></p>

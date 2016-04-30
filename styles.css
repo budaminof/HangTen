@@ -136,3 +136,10 @@ nav button {
 .ng-hide-remove-stagger {
   animation-delay: .2s;
 }
+
+.clickable {
+  cursor: pointer;
+}
+#notClickable {
+  cursor: auto;
+}
