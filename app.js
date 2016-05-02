@@ -21,11 +21,12 @@ app.controller('main', function ($scope) {
   $scope.formSubmit = function (){
     $scope.form.votes = 0;
     $scope.form.comments = [];
-    $scope.form.show= false;
+    $scope.form.show = false;
     $scope.form.date = new Date();
 
     $scope.data.push($scope.form);
     $scope.form = {}
+    $scope.myForm.$setUntouched();
   }
 
   $scope.formClose = function () {
@@ -55,7 +56,7 @@ app.controller('main', function ($scope) {
   $scope.data = [
     {
       title:  'Aspen',
-      image: 'https://media.giphy.com/media/yYSSBtDgbbRzq/giphy.gif',
+      image: 'http://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg',
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Bud Anin",
       date: new Date("April 29, 2016"),
@@ -74,7 +75,7 @@ app.controller('main', function ($scope) {
     },
     {
       title:  'Boulder',
-      image: 'https://media.giphy.com/media/GdzdVs64GIOFa/giphy.gif',
+      image: 'http://www.planwallpaper.com/static/images/beautiful-sunset-images-196063.jpg',
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Nick MacIntyre",
       date: new Date("April 24, 2016"),
@@ -93,7 +94,7 @@ app.controller('main', function ($scope) {
     },
     {
       title:  'Tel Aviv',
-      image: 'https://media.giphy.com/media/jxhJ8ylaYIPbG/giphy.gif',
+      image: 'http://hdwallpapershdpics.com/wp-content/uploads/2015/08/Cool-Tiger-Wallpaper-1920x1080-HD.jpg',
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Coutrney and Mike",
       date: new Date("July 5, 2010"),
@@ -112,7 +113,7 @@ app.controller('main', function ($scope) {
     },
     {
       title:  'New York',
-      image: 'https://media.giphy.com/media/l4Ki7Y9DfsUnvawEg/giphy.gif',
+      image: 'http://www.gettyimages.ca/gi-resources/images/Homepage/Category-Creative/UK/UK_Creative_462809583.jpg',
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Seth the awesome",
       date: new Date("Januray 19, 2006"),
@@ -131,7 +132,7 @@ app.controller('main', function ($scope) {
     },
     {
       title:  'Denver',
-      image: 'https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif',
+      image: 'http://im.rediff.com/news/2015/dec/24tpoty20.jpg',
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
       author: "Seth the awesome",
       date: new Date("May 12, 2013"),

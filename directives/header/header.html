@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button id="collapsBtn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a id="navHeader" class="navbar-brand">Reddit Clone</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <button type="button" class="btn navbar-btn" data-toggle="modal" data-target="#postModal">
+            <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Submit a post
+          </button></li>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search" ng-model="search">
+            </div>
+          </form>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="sort">Sort By<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a ng-click="sort('-votes')">Most Votes</a></li>
+              <li><a ng-click="sort('title')">By Titles</a></li>
+              <li><a ng-click="sort('-date')">Newest</a></li>
+            </ul>
+          </li>
+    </ul>
+    </div>
+  </div>
+</nav>

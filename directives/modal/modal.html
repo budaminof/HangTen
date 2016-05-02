@@ -1,0 +1,85 @@
+<!-- Modal add post-->
+<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add a Post</h4>
+      </div>
+      <div class="modal-body">
+        <form name="myForm" novalidate ng-submit="formSubmit()">
+            <fieldset class="form-group" ng-class="{'has-error': myForm.title.$invalid && myForm.title.$touched, 'has-success': myForm.title.$valid}">
+            <label class="control-label">Title</label>
+            <input type="text" class="form-control" name="title" ng-model="form.title" required placeholder="Enter the title of your posting.">
+            <div ng-messages="myForm.title.$error" ng-if="myForm.title.$touched">
+                <p ng-message="minlength" class="control-label">Title is too short.</p>
+                <p ng-message="required" class="control-label">Title is required.</p>
+            </div>
+            </fieldset>
+            <fieldset class="form-group" ng-class="{'has-error': myForm.description.$invalid && myForm.description.$touched, 'has-success': myForm.description.$valid}">
+            <label class="control-label">Description</label>
+            <input type="text" class="form-control" name="description" ng-model="form.description" required ng-minlength="3" placeholder="Enter the description of the posting.">
+            <div ng-messages="myForm.description.$error" ng-if="myForm.description.$touched">
+                <p ng-message="minlength" class="control-label">Description is too short.</p>
+                <p ng-message="required" class="control-label">Desription is required.</p>
+            </div>
+            </fieldset>
+            <fieldset class="form-group" ng-class="{'has-error': myForm.image.$invalid && myForm.image.$touched, 'has-success': myForm.image.$valid}">
+            <label class="control-label">Image URL</label>
+            <input type="url" class="form-control" name="image" ng-model="form.image" required ng-minlength="3" placeholder="Enter the URL of the image for the posting.">
+            <div ng-messages="myForm.image.$error" ng-if="myForm.image.$touched">
+                <p ng-message="required" class="control-label">Image url is required.</p>
+                <p ng-message="url" class="control-label">Image url is not valid.</p>
+            </div>
+            </fieldset>
+            <fieldset class="form-group" ng-class="{'has-error': myForm.author.$invalid && myForm.author.$touched, 'has-success': myForm.author.$valid}">
+            <label class="control-label">Author</label>
+            <input type="text" class="form-control" name="author" ng-model="form.author" required ng-minlength="2" placeholder="Author of the posting">
+            <div ng-messages="myForm.author.$error" ng-if="myForm.author.$touched">
+                <p ng-message="minlength" class="control-label">Author name is too short.</p>
+                <p ng-message="required" class="control-label">Author name is required.</p>
+            </div>
+            </fieldset>
+            <div class="modal-footer">
+              <button type="button" class="btn btnClose" data-dismiss="modal" ng-click="formClose()">Close</button>
+              <button type="submit" class="btn btnGreen" data-toggle="modal" data-target="#postModal" ng-disabled="myForm.$invalid">Save Post</button>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal form commnets-->
+<div class="modal fade comment-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">Add a Comment on "<span ng-bind="activePost.title"></span>"</h3>
+      </div>
+      <div class="modal-body">
+        <form name="commentForm" novalidate ng-submit="commentSubmit()">
+            <fieldset class="form-group" ng-class="{'has-error': commentForm.yourName.$invalid && commentForm.yourName.$touched, 'has-success': commentForm.yourName.$valid}">
+            <label class="control-label">Your name?</label>
+            <input type="text" class="form-control" name="yourName" ng-model="comment.author" required placeholder="Please enter your name">
+            <div ng-messages="commentForm.yourName.$error" ng-if="commentForm.yourName.$touched">
+                <p ng-message="required" class="control-label">Your name is required.</p>
+            </div>
+            </fieldset>
+            <fieldset class="form-group" ng-class="{'has-error': commentForm.commentBody.$invalid && commentForm.commentBody.$touched, 'has-success': commentForm.commentBody.$valid}">
+            <label class="control-label">Comment?</label>
+            <textarea type="text" class="form-control" name="commentBody" ng-model="comment.text" required placeholder="So, what were you thinking?"></textarea>
+            <div ng-messages="commentForm.commentBody.$error" ng-if="commentForm.commentBody.$touched">
+                <p ng-message="required" class="control-label">Some comment is required.</p>
+            </div>
+            </fieldset>
+            <div class="modal-footer">
+              <button type="button" class="btn btnClose" data-dismiss="modal" ng-click="commentClose()">Close</button>
+              <button type="submit" class="btn btnGreen" data-toggle="modal" data-target=".comment-modal" ng-disabled="commentForm.$invalid">Save Comment</button>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>

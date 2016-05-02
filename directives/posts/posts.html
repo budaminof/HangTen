@@ -1,0 +1,23 @@
+<main class="container-fluid col-md-12" ng-controller="timeController">
+  <section ng-init="vm.sort = '-votes'" ng-repeat="item in data | orderBy : vm.sort | filter : search" class="col-md-10 col-md-offset-1 post">
+    <article class="jumbotron row">
+      <div class="col-md-4 thumbnail">
+        <img ng-src="{{item.image}}" alt="image">
+      </div>
+      <div class="col-md-8">
+        <h4><span ng-bind="item.title"></span> | <span ng-click="voteUp(item)" class="glyphicon  glyphicon-arrow-up" aria-hidden="true"></span> <span ng-click="voteDown(item)" class="glyphicon  glyphicon-arrow-down" aria-hidden="true"></span>
+<span ng-class="{greenVotes: item.votes > 0, redVotes: item.votes < 0}" ng-bind="item.votes"></span></h4>
+        <h5 class="author">By <span ng-bind="item.author"></span></h5>
+        <p ng-bind="item.description"></p>
+        <p><span class="glyphicon glyphicon-calendar" id="notClickable" aria-hidden="true"> </span><span title="{{ item.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}" ng-bind="item.date |  amCalendar"></span> | <span class="clickable" aria-hidden="true" ng-click="commentShow(item)"><span class="glyphicon glyphicon-comment"></span>
+          <ng-pluralize count="item.comments.length"
+            when="{'1': 'View Comment','other': 'View Comments'}">
+          </ng-pluralize>
+          ( <span ng-bind="item.comments.length"></span> ) </span> | <span class="clickable" ng-click="makeAComment(item)" aria-hidden="true" data-toggle="modal" data-target=".comment-modal"><span class="glyphicon glyphicon-pencil"></span> Add a comment</span></p>
+
+          <comments></comments>
+
+        </div>
+    </article>
+  </section>
+</main>
