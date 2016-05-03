@@ -22,23 +22,32 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.9.0/angular-moment.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
 
+<!-- Load module first-->
+  <script src="./module/module.js"></script>
+
+<!--Load all directives  -->
   <script type="text/javascript" src="./app.js"></script>
-  <script src="./directives/header/header.js"></script>
-  <script src="./directives/modal/modal.js"></script>
-  <script src="./directives/posts/posts.js"></script>
-  <script src="./directives/comments/comments.js"></script>
-  <script src="./services/posts.service.js"></script>
+  <script src="directives/header/header.js"></script>
+  <script src="directives/modal/modal.js"></script>
+  <script src="directives/posts/posts.js"></script>
+  <script src="directives/comments/comments.js"></script>
+  <script src="services/posts.service.js"></script>
+
+<!--Load all controllers  -->
+  <script src="controllers/mainController.js"></script>
+  <script src="controllers/time.js"></script>
 
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="animate.css">
+
   <title>Reddit Clone</title>
 </head>
 
 <body ng-controller="MainCtrl">
 
-<header-nav></header-nav>
-<modal></modal>
-<posts></posts>
+  <header-nav></header-nav>
+  <modal></modal>
+  <posts></posts>
 
 </body>
 </html>

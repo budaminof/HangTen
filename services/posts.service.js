@@ -1,6 +1,16 @@
 angular.module('myApp').factory('postsService', function () {
 
   var postsService = {
+
+    addPost: function (post){
+        post.votes = 0;
+        post.comments = [];
+        post.show = false;
+        post.date = new Date();
+
+        return this.data.push(post);
+      },
+      
     data: [
       {
         title:  'Aspen',
