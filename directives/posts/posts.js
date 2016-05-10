@@ -8,6 +8,23 @@ angular.module('myApp').directive('posts', ['postsService', '$log', function (po
     link: function (scope, element, attr, fn) {
       scope.data = postsService.getData();
 
+      // added from modal js, might not work
+      scope.commentSubmit = function () {
+        var newComment = angular.copy(scope.comment);
+        postsService.submitComment(newComment)
+
+        scope.comment = {};
+        scope.commentForm.$setPristine();
+        scope.commentForm.$setUntouched();
+      }
+
+      scope.commentClose = function () {
+        scope.comment = {};
+        scope.commentForm.$setPristine();
+        scope.commentForm.$setUntouched();
+      }
+      
+      ///////
       scope.voteUp = function (post) {
         post.votes++;
       }
