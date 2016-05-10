@@ -25,7 +25,7 @@ angular.module('myApp').directive('modal', function (postsService) {
 
       scope.commentSubmit = function () {
         var newComment = angular.copy(scope.comment);
-        
+
         scope.activePost.comments.push(newComment);
         scope.comment = {};
         scope.commentForm.$setPristine();

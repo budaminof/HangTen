@@ -10,7 +10,11 @@ angular.module('myApp').factory('postsService', function () {
 
         return this.data.push(post);
       },
-      
+
+    getData: function () {
+      return this.data;
+    },
+
     data: [
       {
         title:  'Aspen',
