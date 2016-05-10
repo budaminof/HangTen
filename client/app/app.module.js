@@ -17,7 +17,7 @@
   setupRoutes.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
   function setupRoutes($stateProvider, $urlRouterProvider, $locationProvider){
-    console.log("app module loading at all?");
+    
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("/");
 
