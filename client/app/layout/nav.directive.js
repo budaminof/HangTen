@@ -8,9 +8,11 @@ angular.module('myApp').directive('headerNav',['$log','postsService', function (
     link: function (scope, element, attr, fn){
       scope.sort = function (sortedBy) {
         scope.vm.sort = sortedBy;
+      }
 
         ///moved from modal- might not work!
         scope.formSubmit = function () {
+          $log.info('In the form submit!')
           var newPost = angular.copy(scope.form);
           scope.myForm.$setPristine();
           scope.myForm.$setUntouched();
@@ -23,7 +25,6 @@ angular.module('myApp').directive('headerNav',['$log','postsService', function (
           scope.myForm.$setPristine();
           scope.myForm.$setUntouched();
         }
-      }
 
     }
   }
