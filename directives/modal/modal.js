@@ -2,6 +2,7 @@ angular.module('myApp').directive('modal', ['postsService', function (postsServi
   return {
     restrict: 'E',
     templateUrl: '/directives/modal/modal.html',
+    scope: {},
     link: function (scope, element, attr, fn) {
 
       scope.formSubmit = function () {

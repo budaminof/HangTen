@@ -15,8 +15,10 @@
           </ng-pluralize>
           ( <span ng-bind="item.comments.length"></span> ) </span> | <span class="clickable" ng-click="makeAComment(item)" aria-hidden="true" data-toggle="modal" data-target=".comment-modal"><span class="glyphicon glyphicon-pencil"></span> Add a comment</span></p>
 
-          <comments></comments>
-
+            <div class="comments" ng-repeat="comment in item.comments" ng-show="item.show">
+              <p><h4 ng-bind="comment.author"></h4><p ng-bind="comment.text"></p></p>
+            </div>
+            
         </div>
     </article>
   </section>
