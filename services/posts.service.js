@@ -1,4 +1,4 @@
-angular.module('myApp').factory('postsService', function () {
+angular.module('myApp').factory('postsService', ['$log',function ($log) {
 
   var postsService = {
 
@@ -14,6 +14,18 @@ angular.module('myApp').factory('postsService', function () {
     getData: function () {
       return this.data;
     },
+
+    makeAComment: function (post){
+      return this.activePost = post;
+    },
+
+    submitComment: function (comment){
+      this.activePost.comments.push(comment);
+      this.activePost = null;
+      return
+    },
+
+    activePost: {},
 
     data: [
       {
@@ -106,4 +118,4 @@ angular.module('myApp').factory('postsService', function () {
   }
 
   return postsService;
-});
+}]);

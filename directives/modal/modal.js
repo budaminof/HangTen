@@ -1,4 +1,4 @@
-angular.module('myApp').directive('modal', function (postsService) {
+angular.module('myApp').directive('modal', ['postsService', function (postsService) {
   return {
     restrict: 'E',
     templateUrl: '/directives/modal/modal.html',
@@ -6,7 +6,6 @@ angular.module('myApp').directive('modal', function (postsService) {
 
       scope.formSubmit = function () {
         var newPost = angular.copy(scope.form);
-
         scope.myForm.$setPristine();
         scope.myForm.$setUntouched();
         postsService.addPost(newPost);
@@ -19,14 +18,10 @@ angular.module('myApp').directive('modal', function (postsService) {
         scope.myForm.$setUntouched();
       }
 
-      scope.makeAComment = function (post){
-        scope.activePost = post;
-      }
-
       scope.commentSubmit = function () {
         var newComment = angular.copy(scope.comment);
+        postsService.submitComment(newComment)
 
-        scope.activePost.comments.push(newComment);
         scope.comment = {};
         scope.commentForm.$setPristine();
         scope.commentForm.$setUntouched();
@@ -40,4 +35,4 @@ angular.module('myApp').directive('modal', function (postsService) {
 
     }
   }
-})
+}])
