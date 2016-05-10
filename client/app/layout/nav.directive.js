@@ -44,5 +44,5 @@
         scope.myForm.$setPristine();
         scope.myForm.$setUntouched();
       }
-
-})();
+    }
+}());

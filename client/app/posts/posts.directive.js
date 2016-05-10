@@ -1,11 +1,25 @@
-angular.module('myApp').directive('posts', ['postsService', '$log', function (postsService, $log) {
-  return {
-    restrict: 'E',
-    templateUrl: '/directives/posts/posts.html',
-    scope:{
-      vm: "="
-    },
-    link: function (scope, element, attr, fn) {
+(function() {
+  'use strict';
+
+  angular.module('app.posts')
+    .directive('posts', postsDirective)
+
+    function postsDirective () {
+      return {
+        restrict: 'E',
+        templateUrl: '/app/posts/posts.directive.html',
+        controller: postsController,
+        controllerAs: 'vm'
+      }
+    }
+
+    postsController.$inject = [
+      'postsService',
+      '$log'
+    ];
+
+    function postsController(postsService, $log) {
+      var vm = this;
       scope.data = postsService.getData();
 
       // added from modal js, might not work
@@ -23,8 +37,8 @@ angular.module('myApp').directive('posts', ['postsService', '$log', function (po
         scope.commentForm.$setPristine();
         scope.commentForm.$setUntouched();
       }
-      
-      ///////
+
+      /////// WHO KNOWS???????
       scope.voteUp = function (post) {
         post.votes++;
       }
@@ -40,7 +54,6 @@ angular.module('myApp').directive('posts', ['postsService', '$log', function (po
       scope.makeAComment = function (post){
         postsService.makeAComment(post)
       }
-
     }
-  }
-}])
+
+})();

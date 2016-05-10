@@ -1,7 +1,5 @@
-// angular.module('myApp', ['ngAnimate', 'angularMoment', 'ngMessages']);
-
 (function() {
-  'use strict'
+  'use strict';
 
   var dependencies = [
     'ngAnimate',
@@ -11,12 +9,15 @@
     'app.posts'
   ];
 
+
   angular.module('app', dependencies)
     .config(setupRoutes);
+
 
   setupRoutes.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
   function setupRoutes($stateProvider, $urlRouterProvider, $locationProvider){
+    console.log("app module loading at all?");
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("/");
 
@@ -25,4 +26,5 @@
         url: "/",
         template: "<app></app>"
       });
+  }
 })();
