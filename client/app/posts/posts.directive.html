@@ -1,21 +1,21 @@
 <main class="container-fluid col-md-12" ng-controller="timeController">
-  <section ng-init="vm.sort = '-votes'" ng-repeat="item in data | orderBy : vm.sort | filter : search" class="col-md-10 col-md-offset-1 post">
+  <section ng-init="vm.sort = '-votes'" ng-repeat="post in vm.posts | orderBy : vm.sort | filter : search" class="col-md-10 col-md-offset-1 post">
     <article class="jumbotron row">
       <div class="col-md-4 thumbnail">
-        <img ng-src="{{item.image}}" alt="image">
+        <img ng-src="{{post.image}}" alt="image">
       </div>
       <div class="col-md-8">
-        <h4><span ng-bind="item.title"></span> | <span ng-click="voteUp(item)" class="glyphicon  glyphicon-arrow-up" aria-hidden="true"></span> <span ng-click="voteDown(item)" class="glyphicon  glyphicon-arrow-down" aria-hidden="true"></span>
-<span ng-class="{greenVotes: item.votes > 0, redVotes: item.votes < 0}" ng-bind="item.votes"></span></h4>
-        <h5 class="author">By <span ng-bind="item.author"></span></h5>
-        <p ng-bind="item.description"></p>
-        <p><span class="glyphicon glyphicon-calendar" id="notClickable" aria-hidden="true"> </span><span title="{{ item.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}" ng-bind="item.date |  amCalendar"></span> | <span class="clickable" aria-hidden="true" ng-click="commentShow(item)"><span class="glyphicon glyphicon-comment"></span>
-          <ng-pluralize count="item.comments.length"
+        <h4><span ng-bind="post.title"></span> | <span ng-click="vm.voteUp(post)" class="glyphicon  glyphicon-arrow-up" aria-hidden="true"></span> <span ng-click="vm.voteDown(post)" class="glyphicon  glyphicon-arrow-down" aria-hidden="true"></span>
+<span ng-class="{greenVotes: post.votes > 0, redVotes: post.votes < 0}" ng-bind="post.votes"></span></h4>
+        <h5 class="author">By <span ng-bind="post.author"></span></h5>
+        <p ng-bind="post.description"></p>
+        <p><span class="glyphicon glyphicon-calendar" id="notClickable" aria-hidden="true"> </span><span title="{{ post.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}" ng-bind="post.date |  amCalendar"></span> | <span class="clickable" aria-hidden="true" ng-click="vm.commentShow(post)"><span class="glyphicon glyphicon-comment"></span>
+          <ng-pluralize count="post.comments.length"
             when="{'1': 'View Comment','other': 'View Comments'}">
           </ng-pluralize>
-          ( <span ng-bind="item.comments.length"></span> ) </span> | <span class="clickable" ng-click="makeAComment(item)" aria-hidden="true" data-toggle="modal" data-target=".comment-modal"><span class="glyphicon glyphicon-pencil"></span> Add a comment</span></p>
+          ( <span ng-bind="post.comments.length"></span> ) </span> | <span class="clickable" ng-click="vm.makeAComment(post)" aria-hidden="true" data-toggle="modal" data-target=".comment-modal"><span class="glyphicon glyphicon-pencil"></span> Add a comment</span></p>
 
-            <div class="comments" ng-repeat="comment in item.comments" ng-show="item.show">
+            <div class="comments" ng-repeat="comment in post.comments" ng-show="post.show">
               <p><h4 ng-bind="comment.author"></h4><p ng-bind="comment.text"></p></p>
             </div>
 
@@ -32,23 +32,23 @@
         <h3 class="modal-title">Add a Comment!</h3>
       </div>
       <div class="modal-body">
-        <form name="commentForm" novalidate ng-submit="commentSubmit()">
+        <form name="commentForm" novalidate ng-submit="vm.commentSubmit(commentForm)">
             <fieldset class="form-group" ng-class="{'has-error': commentForm.yourName.$invalid && commentForm.yourName.$touched, 'has-success': commentForm.yourName.$valid}">
             <label class="control-label">Your name?</label>
-            <input type="text" class="form-control" name="yourName" ng-model="comment.author" required placeholder="Please enter your name">
+            <input type="text" class="form-control" name="yourName" ng-model="vm.comment.author" required placeholder="Please enter your name">
             <div ng-messages="commentForm.yourName.$error" ng-if="commentForm.yourName.$touched">
                 <p ng-message="required" class="control-label">Your name is required.</p>
             </div>
             </fieldset>
             <fieldset class="form-group" ng-class="{'has-error': commentForm.commentBody.$invalid && commentForm.commentBody.$touched, 'has-success': commentForm.commentBody.$valid}">
             <label class="control-label">Comment?</label>
-            <textarea type="text" class="form-control" name="commentBody" ng-model="comment.text" required placeholder="So, what were you thinking?"></textarea>
+            <textarea type="text" class="form-control" name="commentBody" ng-model="vm.comment.text" required placeholder="So, what were you thinking?"></textarea>
             <div ng-messages="commentForm.commentBody.$error" ng-if="commentForm.commentBody.$touched">
                 <p ng-message="required" class="control-label">Some comment is required.</p>
             </div>
             </fieldset>
             <div class="modal-footer">
-              <button type="button" class="btn btnClose" data-dismiss="modal" ng-click="commentClose()">Close</button>
+              <button type="button" class="btn btnClose" data-dismiss="modal" ng-click="vm.commentClose(commentForm)">Close</button>
               <button type="submit" class="btn btnGreen" data-toggle="modal" data-target=".comment-modal" ng-disabled="commentForm.$invalid">Save Comment</button>
             </div>
           </form>

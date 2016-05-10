@@ -20,38 +20,42 @@
 
     function postsController(postsService, $log) {
       var vm = this;
-      scope.data = postsService.getData();
+      vm.posts = postsService.getPosts();
+      vm.voteUp = voteUp;
+      vm.voteDown = voteDown;
+      vm.commentShow = commentShow;
+      vm.makeAComment = makeAComment;
+      vm.commentClose = commentClose;
+      vm.commentSubmit = commentSubmit;
 
       // added from modal js, might not work
-      scope.commentSubmit = function () {
-        var newComment = angular.copy(scope.comment);
+      function commentSubmit (form) {
+        var newComment = angular.copy(vm.comment);
         postsService.submitComment(newComment)
-
-        scope.comment = {};
-        scope.commentForm.$setPristine();
-        scope.commentForm.$setUntouched();
+        vm.comment = {};
+        form.$setPristine();
+        form.$setUntouched();
       }
 
-      scope.commentClose = function () {
-        scope.comment = {};
-        scope.commentForm.$setPristine();
-        scope.commentForm.$setUntouched();
+      function commentClose (form) {
+        vm.comment = {};
+        form.$setPristine();
+        form.$setUntouched();
       }
 
-      /////// WHO KNOWS???????
-      scope.voteUp = function (post) {
+      function voteUp (post) {
         post.votes++;
       }
 
-      scope.voteDown = function (post) {
+       function voteDown (post) {
           post.votes--;
       }
 
-      scope.commentShow = function (post) {
+      function commentShow (post) {
         post.show = !post.show;
       }
 
-      scope.makeAComment = function (post){
+      function makeAComment (post){
         postsService.makeAComment(post)
       }
     }
