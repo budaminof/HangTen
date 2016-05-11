@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="app">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
@@ -15,36 +15,35 @@
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+
   <!-- load momentJS (required for angular-moment) -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
 
   <!-- load angular-moment -->
   <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.9.0/angular-moment.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+
+  <!-- load ui-router-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.js"></script>
 
 <!-- Load module first, this can be in app.js-->
-<script type="text/javascript" src="./app.js"></script>
+  <script src="/app/posts/posts.module.js" charset="utf-8"></script>
+  <script src="/app/posts/posts.directive.js" charset="utf-8"></script>
+  <script src="/app/posts/posts.service.js" charset="utf-8"></script>
+  <!-- <script src="/app/posts/time.controller.js" charset="utf-8"></script> -->
+  <script src="/app/app.module.js"></script>
+  <script src="/app/layout/layout.directive.js" charset="utf-8"></script>
+  <script src="/app/layout/nav.directive.js" charset="utf-8"></script>
 
-<!--Load all directives  -->
-  <script src="directives/header/header.js"></script>
-  <script src="directives/posts/posts.js"></script>
 
-<!--Load all controllers  -->
-  <script src="controllers/mainController.js"></script>
-  <script src="controllers/time.js"></script>
-<!--Load all services  -->
-  <script src="services/posts.service.js"></script>
   <link rel="stylesheet" href="./styles.css">
-  <link rel="stylesheet" href="animate.css">
+  <link rel="stylesheet" href="./animate.css">
 
   <title>Reddit Clone</title>
+  <base href="/">
 </head>
 
-<body ng-controller="MainCtrl">
-
-  <header-nav vm="vm"></header-nav>
-  <modal></modal>
-  <posts vm="vm"></posts>
-
+<body>
+<app></app>
 </body>
 </html>
