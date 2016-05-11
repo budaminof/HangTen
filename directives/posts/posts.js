@@ -23,8 +23,8 @@ angular.module('myApp').directive('posts', ['postsService', '$log', function (po
         scope.commentForm.$setPristine();
         scope.commentForm.$setUntouched();
       }
-      
       ///////
+      
       scope.voteUp = function (post) {
         post.votes++;
       }
