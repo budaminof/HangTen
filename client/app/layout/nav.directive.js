@@ -7,6 +7,7 @@
     function navDirective() {
       return {
         restrict: 'E',
+        scope: {},
         templateUrl: '/app/layout/nav.directive.html',
         controller: navController,
         controllerAs: 'vm'

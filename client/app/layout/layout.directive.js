@@ -7,6 +7,7 @@
       function appDirective() {
         return {
           restrict: 'E',
+          scope: {},
           templateUrl: '/app/layout/layout.directive.html',
           controller: controller,
           controllerAs: 'vm'
@@ -18,7 +19,7 @@
       function controller ($log) {
         $log.log('IN THE LAYOUT DIR');
         var vm = this;
-        var testy = function () {
+        vm.testy = function () {
           $log.log('IM GETTING TESTY')
         }
 

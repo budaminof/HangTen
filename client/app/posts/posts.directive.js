@@ -7,6 +7,7 @@
     function postsDirective () {
       return {
         restrict: 'E',
+        scope: {},
         templateUrl: '/app/posts/posts.directive.html',
         controller: postsController,
         controllerAs: 'vm'
