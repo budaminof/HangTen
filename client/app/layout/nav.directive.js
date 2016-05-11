@@ -25,7 +25,7 @@
       vm.formSubmit = formSubmit;
       vm.formClose = formClose;
       vm.setSort = setSort;
-      vm.search = postsService.search;
+      vm.search = postsService.search ;
 
       function setSort(sortBy){
         postsService.sort.criteria = sortBy;

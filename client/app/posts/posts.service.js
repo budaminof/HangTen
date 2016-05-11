@@ -104,7 +104,7 @@
         getPosts: getPosts,
         makeAComment: makeAComment,
         submitComment: submitComment,
-        sort: {criteria: "-votes"},
+        sort: {criteria: "-date"},
         search: {query: ""}
       }
 
