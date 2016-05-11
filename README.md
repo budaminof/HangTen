@@ -5,3 +5,7 @@
 [We even deployed!](http://budaminof.github.io/reddit_clone)
 
 ![](/redditclone.jpg)
+
+Our Entity-Relationship diagram:
+
+![](/db.jpg)
