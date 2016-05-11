@@ -1,6 +1,10 @@
 (function() {
   'use strict';
 
-  angular.module('app.posts', []);
+  var dependencies = [
+    'angularMoment'
+  ];
+
+  angular.module('app.posts', dependencies);
 
 }());

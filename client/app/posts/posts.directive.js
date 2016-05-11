@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app.posts')
-    .directive('posts', postsDirective)
+    .directive('redditPosts', postsDirective)
 
     function postsDirective () {
       return {

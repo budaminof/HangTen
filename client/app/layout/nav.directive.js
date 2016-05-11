@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .directive('navbar', navDirective);
+    .directive('redditNavbar', navDirective);
 
     function navDirective() {
       return {
@@ -20,20 +20,13 @@
     ];
 
     function navController ($log, postsService) {
-      console.log('IN THE FUCKING NAV CONTROLLER');
       var vm = this;
       vm.post = {};
       vm.formSubmit = formSubmit;
       vm.formClose = formClose;
-      vm.test = test;
       vm.setSort = setSort;
 
-      function test () {
-        return console.log('CLICK MOTHER FUCKER');
-      }
-
       function formSubmit (myForm) {
-        $log.log('form submit');
         var newPost = angular.copy(vm.post);
         $log.info('after copy', newPost);
         myForm.$setPristine();

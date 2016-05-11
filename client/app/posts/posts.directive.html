@@ -9,7 +9,7 @@
 <span ng-class="{greenVotes: post.votes > 0, redVotes: post.votes < 0}" ng-bind="post.votes"></span></h4>
         <h5 class="author">By <span ng-bind="post.author"></span></h5>
         <p ng-bind="post.description"></p>
-        <p><span class="glyphicon glyphicon-calendar" id="notClickable" aria-hidden="true"> </span><span ng-bind="post.date"></span> | <span class="clickable" aria-hidden="true" ng-click="vm.commentShow(post)"><span class="glyphicon glyphicon-comment"></span>
+        <p><span class="glyphicon glyphicon-calendar" id="notClickable" aria-hidden="true"> </span><span ng-bind="post.date | amCalendar"></span> | <span class="clickable" aria-hidden="true" ng-click="vm.commentShow(post)"><span class="glyphicon glyphicon-comment"></span>
           <ng-pluralize count="post.comments.length"
             when="{'1': 'View Comment','other': 'View Comments'}">
           </ng-pluralize>

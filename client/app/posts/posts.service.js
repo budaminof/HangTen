@@ -11,13 +11,13 @@
     function factory($log) {
       var _sortCriteria = "-votes"
       var _activePost = {};
-      var _data = [
+      var _posts = [
         {
           title:  'Aspen',
           image: 'http://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg',
           description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
           author: "Bud Anin",
-          date: new Date("April 29, 2016"),
+          date: new Date("May 10, 2016"),
           votes: 4,
           show: false,
           comments: [
@@ -105,7 +105,8 @@
         makeAComment: makeAComment,
         submitComment: submitComment,
         setSortCriteria: setSortCriteria,
-        getSortCriteria: getSortCriteria
+        getSortCriteria: getSortCriteria,
+        serach: ""
       }
 
       function addPost(post){
@@ -119,7 +120,7 @@
         }
 
       function getPosts() {
-        return _data;
+        return _posts;
       }
 
       function makeAComment(post){

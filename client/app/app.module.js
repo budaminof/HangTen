@@ -23,7 +23,7 @@
     $stateProvider
       .state('app', {
         url: "/",
-        template: "<app></app>"
+        template: "<reddit-clone></reddit-clone>"
       });
   }
 })();

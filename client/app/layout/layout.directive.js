@@ -2,7 +2,7 @@
   'use strict';
 
     angular.module('app')
-      .directive('app', appDirective);
+      .directive('redditClone', appDirective);
 
       function appDirective() {
         return {
@@ -17,11 +17,7 @@
       controller.$inject = ["$log"]
 
       function controller ($log) {
-        $log.log('IN THE LAYOUT DIR');
         var vm = this;
-        vm.testy = function () {
-          $log.log('IM GETTING TESTY')
-        }
 
       }
 }());
