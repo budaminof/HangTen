@@ -1,4 +1,4 @@
-<main class="container-fluid col-md-12" ng-controller="timeController">
+<main class="container-fluid col-md-12">
   <section ng-init="vm.sort = '-votes'" ng-repeat="post in vm.posts | orderBy : vm.sort | filter : search" class="col-md-10 col-md-offset-1 post">
     <article class="jumbotron row">
       <div class="col-md-4 thumbnail">
@@ -9,11 +9,11 @@
 <span ng-class="{greenVotes: post.votes > 0, redVotes: post.votes < 0}" ng-bind="post.votes"></span></h4>
         <h5 class="author">By <span ng-bind="post.author"></span></h5>
         <p ng-bind="post.description"></p>
-        <p><span class="glyphicon glyphicon-calendar" id="notClickable" aria-hidden="true"> </span><span title="{{ post.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}" ng-bind="post.date |  amCalendar"></span> | <span class="clickable" aria-hidden="true" ng-click="vm.commentShow(post)"><span class="glyphicon glyphicon-comment"></span>
+        <p><span class="glyphicon glyphicon-calendar" id="notClickable" aria-hidden="true"> </span><span ng-bind="post.date"></span> | <span class="clickable" aria-hidden="true" ng-click="vm.commentShow(post)"><span class="glyphicon glyphicon-comment"></span>
           <ng-pluralize count="post.comments.length"
             when="{'1': 'View Comment','other': 'View Comments'}">
           </ng-pluralize>
-          ( <span ng-bind="post.comments.length"></span> ) </span> | <span class="clickable" ng-click="vm.makeAComment(post)" aria-hidden="true" data-toggle="modal" data-target=".comment-modal"><span class="glyphicon glyphicon-pencil"></span> Add a comment</span></p>
+          ( <span ng-bind="post.comments.length"></span> ) </span> | <span class="clickable" ng-click="vm.makeAComment(post)" aria-hidden="true" data-toggle="modal" data-target=".comment-modal"><span class="glyphicon glyphicon-pencil"></span>Add a comment</span></p>
 
             <div class="comments" ng-repeat="comment in post.comments" ng-show="post.show">
               <p><h4 ng-bind="comment.author"></h4><p ng-bind="comment.text"></p></p>

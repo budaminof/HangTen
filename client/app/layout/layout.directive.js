@@ -7,11 +7,20 @@
       function appDirective() {
         return {
           restrict: 'E',
-          // should scope be closed?
           templateUrl: '/app/layout/layout.directive.html',
-          controller: function () {
-            console.log('I AM IN THE LAYOUT DIRECTIVE AND ALSO CONTROLLER OR SOMETHING NOT REALLY SURE');
-          }
+          controller: controller,
+          controllerAs: 'vm'
         }
+      }
+
+      controller.$inject = ["$log"]
+
+      function controller ($log) {
+        $log.log('IN THE LAYOUT DIR');
+        var vm = this;
+        var testy = function () {
+          $log.log('IM GETTING TESTY')
+        }
+
       }
 }());

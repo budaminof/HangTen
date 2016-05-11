@@ -1,5 +1,5 @@
-angular.module('app.posts').controller('timeController', function($scope) {
-  $scope.view = {};
-  $scope.view.time = new Date();
-
-});
+// angular.module('app.posts').controller('timeController', function($scope) {
+//   $scope.view = {};
+//   $scope.view.time = new Date();
+//
+// });

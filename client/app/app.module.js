@@ -3,7 +3,6 @@
 
   var dependencies = [
     'ngAnimate',
-    'angularMoment',
     'ngMessages',
     'ui.router',
     'app.posts'
@@ -17,7 +16,7 @@
   setupRoutes.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
   function setupRoutes($stateProvider, $urlRouterProvider, $locationProvider){
-    
+
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("/");
 

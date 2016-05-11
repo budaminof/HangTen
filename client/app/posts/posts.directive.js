@@ -18,7 +18,7 @@
       '$log'
     ];
 
-    function postsController(postsService, $log) {
+    function postsController (postsService, $log) {
       var vm = this;
       vm.posts = postsService.getPosts();
       vm.voteUp = voteUp;

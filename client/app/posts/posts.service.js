@@ -9,6 +9,7 @@
     ];
 
     function factory($log) {
+      var _sortCriteria = "-votes"
       var _activePost = {};
       var _data = [
         {
@@ -102,7 +103,9 @@
         addPost: addPost,
         getPosts: getPosts,
         makeAComment: makeAComment,
-        submitComment: submitComment
+        submitComment: submitComment,
+        setSortCriteria: setSortCriteria,
+        getSortCriteria: getSortCriteria
       }
 
       function addPost(post){
@@ -128,6 +131,15 @@
         _activePost.comments.push(comment);
         _activePost = null;
         return
+      }
+
+      function setSortCriteria(sortedBy) {
+        _sortCriteria = sortedBy;
+        return
+      }
+
+      function getSortCriteria(){
+        return _sortCriteria
       }
     }
 

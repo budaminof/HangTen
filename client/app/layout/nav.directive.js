@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .directive('reddit', navDirective);
+    .directive('navbar', navDirective);
 
     function navDirective() {
       return {
@@ -14,40 +14,46 @@
     }
 
     navController.$inject = [
-      '$log'
-      // 'postsService'
+      '$log',
+      'postsService'
     ];
 
-    function navController($log) {
+    function navController ($log, postsService) {
+      console.log('IN THE FUCKING NAV CONTROLLER');
       var vm = this;
-      vm.post = {title: 'foo'};
+      vm.post = {};
       vm.formSubmit = formSubmit;
       vm.formClose = formClose;
+      vm.test = test;
+      vm.setSort = setSort;
 
-
-      // moving to service
-      // scope.sort = function (sortedBy) {
-      //   scope.vm.sort = sortedBy;
-      // }
-
-      // moved from modal- might not work!
+      function test () {
+        return console.log('CLICK MOTHER FUCKER');
+      }
 
       function formSubmit (myForm) {
-        $log.info('In the form submit!', vm.post);
-
+        $log.log('form submit');
         var newPost = angular.copy(vm.post);
         $log.info('after copy', newPost);
         myForm.$setPristine();
         myForm.$setUntouched();
-        // postsService.addPost(newPost);
+        postsService.addPost(newPost);
         vm.post = {};
       }
 
-      function formClose () {
+      function formClose (myForm) {
+        $log.log('in form close!');
         vm.post = {};
-        vm.myForm.$setPristine();
-        vm.myForm.$setUntouched();
+        myForm.$setPristine();
+        myForm.$setUntouched();
+      }
+
+      function setSort (criteria) {
+        console.log('IN SORT', criteria);
+        $log.log('SERIOUSLY IN SORT', criteria)
+        // postsService.setSortCriteria(criteria);
+        return;
       }
     }
 
-}());
+})();
