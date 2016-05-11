@@ -29,35 +29,40 @@
       vm.commentClose = commentClose;
       vm.commentSubmit = commentSubmit;
 
-      // added from modal js, might not work
+      function voteUp (post) {
+        post.votes++;
+        return
+      }
+
+       function voteDown (post) {
+          post.votes--;
+          return
+      }
+
+      function commentShow (post) {
+        post.show = !post.show;
+        return
+      }
+
+      function makeAComment (post){
+        postsService.makeAComment(post)
+        return
+      }
+
       function commentSubmit (form) {
         var newComment = angular.copy(vm.comment);
         postsService.submitComment(newComment)
         vm.comment = {};
         form.$setPristine();
         form.$setUntouched();
+        return
       }
 
       function commentClose (form) {
         vm.comment = {};
         form.$setPristine();
         form.$setUntouched();
-      }
-
-      function voteUp (post) {
-        post.votes++;
-      }
-
-       function voteDown (post) {
-          post.votes--;
-      }
-
-      function commentShow (post) {
-        post.show = !post.show;
-      }
-
-      function makeAComment (post){
-        postsService.makeAComment(post)
+        return
       }
     }
 

@@ -115,7 +115,7 @@
           post.show = false;
           post.date = new Date();
 
-          _data.push(post);
+          _posts.push(post);
           return
         }
 
