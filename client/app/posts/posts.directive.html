@@ -1,5 +1,5 @@
 <main class="container-fluid col-md-12">
-  <section ng-init="vm.sort = '-votes'" ng-repeat="post in vm.posts | orderBy : vm.sort | filter : search" class="col-md-10 col-md-offset-1 post">
+  <section ng-repeat="post in vm.posts | orderBy : vm.sort.criteria | filter : vm.search.query" class="col-md-10 col-md-offset-1 post">
     <article class="jumbotron row">
       <div class="col-md-4 thumbnail">
         <img ng-src="{{post.image}}" alt="image">

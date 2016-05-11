@@ -28,6 +28,8 @@
       vm.makeAComment = makeAComment;
       vm.commentClose = commentClose;
       vm.commentSubmit = commentSubmit;
+      vm.sort = postsService.sort;
+      vm.search = postsService.search;
 
       function voteUp (post) {
         post.votes++;

@@ -25,7 +25,12 @@
       vm.formSubmit = formSubmit;
       vm.formClose = formClose;
       vm.setSort = setSort;
+      vm.search = postsService.search;
 
+      function setSort(sortBy){
+        postsService.sort.criteria = sortBy;
+        return
+      }
       function formSubmit (myForm) {
         var newPost = angular.copy(vm.post);
         myForm.$setPristine();
@@ -40,9 +45,6 @@
         myForm.$setUntouched();
       }
 
-      function setSort (criteria) {
-        return;
-      }
     }
 
 })();

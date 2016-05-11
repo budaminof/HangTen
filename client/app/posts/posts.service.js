@@ -9,7 +9,6 @@
     ];
 
     function factory($log) {
-      var _sortCriteria = "-votes"
       var _activePost = {};
       var _posts = [
         {
@@ -99,25 +98,25 @@
           comments: []
         }
       ];
+
       return {
         addPost: addPost,
         getPosts: getPosts,
         makeAComment: makeAComment,
         submitComment: submitComment,
-        setSortCriteria: setSortCriteria,
-        getSortCriteria: getSortCriteria,
-        serach: ""
+        sort: {criteria: "-votes"},
+        search: {query: ""}
       }
 
       function addPost(post){
-          post.votes = 0;
-          post.comments = [];
-          post.show = false;
-          post.date = new Date();
+        post.votes = 0;
+        post.comments = [];
+        post.show = false;
+        post.date = new Date();
 
-          _posts.push(post);
-          return
-        }
+        _posts.push(post);
+        return
+      }
 
       function getPosts() {
         return _posts;
@@ -134,14 +133,6 @@
         return
       }
 
-      function setSortCriteria(sortedBy) {
-        _sortCriteria = sortedBy;
-        return
-      }
-
-      function getSortCriteria(){
-        return _sortCriteria
-      }
     }
 
 })();
