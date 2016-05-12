@@ -3,7 +3,9 @@ var router = express.Router();
 var knex = require('knex')(require('../knexfile')[process.env.DB_ENV || 'development']);
 
 router.get('/api/v1/posts', function(req, res, next) {
-  knex('posts').then(function(data){
+  knex('posts')
+  .innerJoin('users', 'posts.user_id', 'users.user_id')
+  .then(function(data){
     return res.json(data);
   })
 

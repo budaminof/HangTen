@@ -7,7 +7,7 @@
       <div class="col-md-8">
         <h4><span ng-bind="post.title"></span> | <span ng-click="vm.voteUp(post)" class="glyphicon  glyphicon-arrow-up" aria-hidden="true"></span> <span ng-click="vm.voteDown(post)" class="glyphicon  glyphicon-arrow-down" aria-hidden="true"></span>
 <span ng-class="{greenVotes: post.votes > 0, redVotes: post.votes < 0}" ng-bind="post.votes"></span></h4>
-        <h5 class="author">By <span ng-bind="post.user_id"></span></h5>
+        <h5 class="author">By <span ng-bind="post.username"></span></h5>
         <p ng-bind="post.description"></p>
         <p><span class="glyphicon glyphicon-calendar" id="notClickable" aria-hidden="true"> </span><span ng-bind="post.create_at | amCalendar"></span> | <span class="clickable" aria-hidden="true" ng-click="vm.commentShow(post)"><span class="glyphicon glyphicon-comment"></span>
           <ng-pluralize count="post.comments.length"

@@ -5,7 +5,6 @@ exports.up = function(knex, Promise) {
     table.string('email').unique();
     table.string('username').unique();
     table.string('password');
-    table.integer('salt');
   })
   .createTable('posts', function (table) {
     table.increments('post_id');
