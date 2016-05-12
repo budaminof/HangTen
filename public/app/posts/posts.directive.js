@@ -21,7 +21,12 @@
 
     function postsController (postsService, $log) {
       var vm = this;
-      vm.posts = postsService.getPosts();
+
+      postsService.getPosts().then(function (posts){
+        vm.posts = posts.data;
+        return
+      });
+      
       vm.voteUp = voteUp;
       vm.voteDown = voteDown;
       vm.commentShow = commentShow;
