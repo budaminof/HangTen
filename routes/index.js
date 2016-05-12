@@ -5,6 +5,7 @@ var knex = require('knex')(require('../knexfile')[process.env.DB_ENV || 'develop
 router.get('/api/v1/posts', function(req, res, next) {
   knex('posts')
   .innerJoin('users', 'posts.user_id', 'users.user_id')
+  .returning('title', 'description', 'votes', 'image_url', 'create_at', 'username')
   .then(function(data){
     return res.json(data);
   })
