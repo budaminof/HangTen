@@ -23,8 +23,7 @@
       var vm = this;
 
       postsService.getPosts().then(function (posts){
-        vm.posts = posts.data;
-        return
+        return vm.posts = posts;
       });
       
       vm.voteUp = voteUp;

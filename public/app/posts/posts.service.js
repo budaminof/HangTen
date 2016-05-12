@@ -11,9 +11,10 @@
 
     function factory($log, $http) {
       var _activePost = {};
+      var _posts = [];
 
       return {
-        // addPost: addPost,
+        addPost: addPost,
         getPosts: getPosts,
         makeAComment: makeAComment,
         submitComment: submitComment,
@@ -23,16 +24,18 @@
 
       function addPost(post){
         post.votes = 0;
-        post.comments = [];
-        post.show = false;
-        post.date = new Date();
-
-        _posts.push(post);
-        return
+        post.user_id = 2;
+        return $http.post('/api/v1/posts/add', post).then(function (newPost){
+          _posts.push(newPost.data);
+          return _posts;
+        });
       }
 
       function getPosts() {
-        return $http.get('/api/v1/posts');
+        return $http.get('/api/v1/posts').then(function (res){
+          _posts = res.data;
+          return _posts;
+        });
       }
 
       function makeAComment(post){

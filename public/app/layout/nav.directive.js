@@ -31,12 +31,16 @@
         postsService.sort.criteria = sortBy;
         return
       }
+
       function formSubmit (myForm) {
         var newPost = angular.copy(vm.post);
         myForm.$setPristine();
         myForm.$setUntouched();
-        postsService.addPost(newPost);
         vm.post = {};
+
+        postsService.addPost(newPost).then(function (res){
+          return res;
+        })
       }
 
       function formClose (myForm) {
