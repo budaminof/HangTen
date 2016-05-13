@@ -61,11 +61,22 @@
       function updateVote (post, direction) {
         if(direction == 'up'){
           return $http.post('/api/v1/posts/'+ post.id +'/voteup', post).then(function (res){
-              return res;
+              _posts.forEach(function (item){
+                if (item.id === post.id) {
+                  item.votes ++
+                }
+              })
+              return _posts;
           })
-        } else {
+        }
+        else {
           return $http.post('/api/v1/posts/'+ post.id +'/votedown', post).then(function (res){
-            return res;
+            _posts.forEach(function (item){
+              if (item.id === post.id) {
+                item.votes --
+              }
+            })
+            return _posts;
           })
         }
       }

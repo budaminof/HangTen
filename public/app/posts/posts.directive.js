@@ -39,15 +39,13 @@
       vm.deleteComment = deleteComment;
 
       function voteUp (post) {
-        post.votes++;
         postsService.updateVote(post, 'up');
         return
       }
 
        function voteDown (post) {
-          post.votes--;
-          postsService.updateVote(post, 'down');
-          return
+        postsService.updateVote(post, 'down');
+        return
       }
 
       function commentShow (post) {
