@@ -47,9 +47,17 @@
       }
 
       function submitComment(comment){
-        _activePost.comments.push(comment);
-        _activePost = null;
-        return
+        return $http.post('/api/v1/posts/'+ comment.post_id +'/comments/add', comment)
+          .then(function (res){
+             comment.username = "friend";
+             comment.create_at = res.data.create_at;
+             _posts.forEach(function (post){
+               if (post.id === comment.post_id){
+                 post.comments.push(comment)
+               }
+             })
+            return _posts
+          })
       }
 
       function updateVote (post, direction) {

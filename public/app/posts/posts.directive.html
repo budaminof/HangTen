@@ -34,16 +34,9 @@
       </div>
       <div class="modal-body">
         <form name="commentForm" novalidate ng-submit="vm.commentSubmit(commentForm)">
-            <fieldset class="form-group" ng-class="{'has-error': commentForm.yourName.$invalid && commentForm.yourName.$touched, 'has-success': commentForm.yourName.$valid}">
-            <label class="control-label">Your name?</label>
-            <input type="text" class="form-control" name="yourName" ng-model="vm.comment.author" required placeholder="Please enter your name">
-            <div ng-messages="commentForm.yourName.$error" ng-if="commentForm.yourName.$touched">
-                <p ng-message="required" class="control-label">Your name is required.</p>
-            </div>
-            </fieldset>
             <fieldset class="form-group" ng-class="{'has-error': commentForm.commentBody.$invalid && commentForm.commentBody.$touched, 'has-success': commentForm.commentBody.$valid}">
             <label class="control-label">Comment?</label>
-            <textarea type="text" class="form-control" name="commentBody" ng-model="vm.comment.text" required placeholder="So, what were you thinking?"></textarea>
+            <textarea type="text" class="form-control" name="commentBody" ng-model="vm.comment.comment" required placeholder="So, what were you thinking?"></textarea>
             <div ng-messages="commentForm.commentBody.$error" ng-if="commentForm.commentBody.$touched">
                 <p ng-message="required" class="control-label">Some comment is required.</p>
             </div>

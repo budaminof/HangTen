@@ -71,6 +71,16 @@ router.post('/api/v1/posts/:postId/votedown', function(req, res, next) {
   })
 });
 
+router.post('/api/v1/posts/:postId/comments/add', function(req, res, next) {
+  knex('comments')
+  .insert(req.body)
+  .returning('*')
+  .then(function(comment){
+    console.log('in route comment added', comment);
+    return res.json(comment[0]);
+  })
+});
+
 router.get('*', function (req,res,next){
   res.sendfile('index.html');
 });

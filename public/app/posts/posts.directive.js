@@ -34,6 +34,7 @@
       vm.commentSubmit = commentSubmit;
       vm.sort = postsService.sort;
       vm.search = postsService.search;
+      vm.activePostId = '';
 
       function voteUp (post) {
         post.votes++;
@@ -53,14 +54,19 @@
       }
 
       function makeAComment (post){
+        vm.activePostId = post.id;
         postsService.makeAComment(post)
         return
       }
 
       function commentSubmit (form) {
         var newComment = angular.copy(vm.comment);
+        newComment.post_id = vm.activePostId;
+        newComment.user_id = 3;
+
         postsService.submitComment(newComment)
         vm.comment = {};
+        vm.activePostId = null;
         form.$setPristine();
         form.$setUntouched();
         return
@@ -72,6 +78,7 @@
         form.$setUntouched();
         return
       }
+      
     }
 
 })();
