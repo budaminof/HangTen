@@ -17,7 +17,7 @@
 
             <div class="comments" ng-repeat="comment in post.comments" ng-show="post.show">
               <p><h4 ng-bind="comment.username"></h4><p ng-bind="comment.comment"></p>
-            <p ng-bind="comment.create_at"></p></p>
+            <p ng-bind="comment.create_at | amCalendar"></p></p>
             </div>
 
         </div>
