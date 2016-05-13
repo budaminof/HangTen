@@ -25,7 +25,7 @@
       postsService.getPosts().then(function (posts){
         return vm.posts = posts;
       });
-      
+
       vm.voteUp = voteUp;
       vm.voteDown = voteDown;
       vm.commentShow = commentShow;
@@ -37,11 +37,13 @@
 
       function voteUp (post) {
         post.votes++;
+        postsService.updateVote(post, 'up');
         return
       }
 
        function voteDown (post) {
           post.votes--;
+          postsService.updateVote(post, 'down');
           return
       }
 

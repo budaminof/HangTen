@@ -50,6 +50,26 @@ router.post('/api/v1/posts/add', function(req, res, next) {
   })
 });
 
+router.post('/api/v1/posts/:postId/voteup', function(req, res, next) {
+  knex('posts')
+  .where({post_id: req.params.postId})
+  .increment('votes', 1)
+  .returning('*')
+  .then(function(post){
+    return res.json(post[0]);
+  })
+});
+
+router.post('/api/v1/posts/:postId/votedown', function(req, res, next) {
+  knex('posts')
+  .where({post_id: req.params.postId})
+  .decrement('votes', 1)
+  .returning('*')
+  .then(function(post){
+    return res.json(post[0]);
+  })
+});
+
 router.get('*', function (req,res,next){
   res.sendfile('index.html');
 });
