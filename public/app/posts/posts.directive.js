@@ -36,6 +36,7 @@
       vm.search = postsService.search;
       vm.activePostId = '';
       vm.deletePost = deletePost;
+      vm.deleteComment = deleteComment;
 
       function voteUp (post) {
         post.votes++;
@@ -80,9 +81,14 @@
       }
 
       function deletePost (post){
-        console.log('in delete directive', post);
         postsService.deletePost(post);
-        return 
+        return
+      }
+
+      function deleteComment (comment, post){
+        postsService.deleteComment(comment);
+        post.show = false;
+        return
       }
 
     }

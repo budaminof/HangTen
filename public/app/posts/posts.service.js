@@ -20,7 +20,8 @@
         sort: {criteria: "-date"},
         search: {query: ""},
         updateVote: updateVote,
-        deletePost: deletePost
+        deletePost: deletePost,
+        deleteComment: deleteComment
       }
 
       function addPost(post){
@@ -70,11 +71,24 @@
       }
 
       function deletePost (post) {
-        return $http.delete('/api/v1/posts/'+ post.id)
+        return $http.delete('/api/v1/posts/' + post.id)
         .then(function (res) {
           var target = _posts.indexOf(post);
           _posts.splice(target, 1);
           return _posts;
+        })
+      }
+
+      function deleteComment (comment) {
+        return $http.delete('/api/v1/comments/' + comment.comment_id)
+        .then(function (res){
+          _posts.forEach(function (item){
+            if (item.id === comment.post_id){
+              var target = _posts.indexOf(comment);
+              item.comments.splice(target, 1)
+            }
+          })
+          return _posts
         })
       }
 

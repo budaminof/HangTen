@@ -26,7 +26,7 @@ router.get('/api/v1/posts', function(req, res, next) {
 
     return knex('comments')
     .innerJoin('users', 'comments.user_id', 'users.user_id')
-    .select('users.username', 'comments.comment', 'comments.post_id', 'comments.create_at')
+    .select('users.username', 'comments.comment', 'comments.post_id', 'comments.create_at', 'comments.comment_id')
     })
     .then(function (dataComments) {
 
@@ -86,7 +86,6 @@ router.delete('/api/v1/posts/:postId', function(req, res, next) {
   .first()
   .del()
   .then(function(response){
-    console.log('in delete', response);
     res.status(200).json({
       msg: 'success delete'
     });
@@ -100,7 +99,6 @@ router.delete('/api/v1/comments/:commentId', function(req, res, next) {
   .first()
   .del()
   .then(function(response){
-    console.log('in delete', response);
     res.status(200).json({
       msg: 'success delete comment'
     });
