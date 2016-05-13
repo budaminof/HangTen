@@ -21,9 +21,17 @@
     $urlRouterProvider.otherwise("/");
 
     $stateProvider
-      .state('app', {
-        url: "/",
-        template: "<reddit-clone></reddit-clone>"
-      });
-  }
+       .state('app', {
+         abstract: true,
+         template: "<reddit-clone></reddit-clone>",
+      })
+      .state('app.posts',{
+        template: "<reddit-posts></reddit-posts>",
+        url: "/"
+        })
+      .state('app.account',{
+        template: "<reddit-account></reddit-account>",
+        url: "/login"
+        })
+      }
 })();
