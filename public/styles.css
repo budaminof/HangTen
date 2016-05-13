@@ -104,12 +104,12 @@ nav button {
 }
 
 .ng-enter {
-  animation: zoomInUp .7s;
+  animation: fadeIn 1s;
 }
 
-.ng-leave {
-  animation: zoomOutDown .9s;
-}
+/*.ng-leave {
+  animation: fadeIn .4s;
+}*/
 
 .greenVotes {
   color: green;
@@ -140,6 +140,11 @@ nav button {
 .clickable {
   cursor: pointer;
 }
+
 #notClickable {
   cursor: auto;
+}
+
+.account-portal {
+  margin-top: 100px;
 }

@@ -8,7 +8,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a id="navHeader" class="navbar-brand">Reddit Clone</a>
+        <a id="navHeader" class="navbar-brand" ui-sref="posts">Reddit Clone</a>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -31,7 +31,11 @@
               </ul>
             </li>
         </ul>
-        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a ui-sref="login">LogIn</a></li>
+          <li><a ui-sref="signup">SignUp</a></li>
+        </ul>
+      </div>
       </div>
   </nav>
 
