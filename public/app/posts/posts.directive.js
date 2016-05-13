@@ -35,6 +35,7 @@
       vm.sort = postsService.sort;
       vm.search = postsService.search;
       vm.activePostId = '';
+      vm.deletePost = deletePost;
 
       function voteUp (post) {
         post.votes++;
@@ -76,6 +77,12 @@
         form.$setPristine();
         form.$setUntouched();
         return
+      }
+
+      function deletePost (post){
+        console.log('in delete directive', post);
+        postsService.deletePost(post);
+        return 
       }
 
     }

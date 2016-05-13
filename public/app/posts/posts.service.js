@@ -19,7 +19,8 @@
         submitComment: submitComment,
         sort: {criteria: "-date"},
         search: {query: ""},
-        updateVote: updateVote
+        updateVote: updateVote,
+        deletePost: deletePost
       }
 
       function addPost(post){
@@ -66,6 +67,15 @@
             return res;
           })
         }
+      }
+
+      function deletePost (post) {
+        return $http.delete('/api/v1/posts/'+ post.id)
+        .then(function (res) {
+          var target = _posts.indexOf(post);
+          _posts.splice(target, 1);
+          return _posts;
+        })
       }
 
     }

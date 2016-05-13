@@ -80,5 +80,33 @@ router.post('/api/v1/posts/:postId/comments/add', function(req, res, next) {
   })
 });
 
+router.delete('/api/v1/posts/:postId', function(req, res, next) {
+  knex('posts')
+  .where({post_id: req.params.postId})
+  .first()
+  .del()
+  .then(function(response){
+    console.log('in delete', response);
+    res.status(200).json({
+      msg: 'success delete'
+    });
+    return
+  })
+});
+
+router.delete('/api/v1/comments/:commentId', function(req, res, next) {
+  knex('comments')
+  .where({comment_id: req.params.commentId})
+  .first()
+  .del()
+  .then(function(response){
+    console.log('in delete', response);
+    res.status(200).json({
+      msg: 'success delete comment'
+    });
+    return
+  })
+});
+
 
 module.exports = router;
