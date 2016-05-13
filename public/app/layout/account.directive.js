@@ -24,5 +24,6 @@
           var newUser = angular.copy(vm.user);
           return accountService.createUser(newUser)
         }
+
       }
 }());

@@ -16,16 +16,18 @@
 
     navController.$inject = [
       '$log',
-      'postsService'
+      'postsService',
+      'accountService'
     ];
 
-    function navController ($log, postsService) {
+    function navController ($log, postsService, accountService) {
       var vm = this;
       vm.post = {};
       vm.formSubmit = formSubmit;
       vm.formClose = formClose;
       vm.setSort = setSort;
       vm.search = postsService.search ;
+      vm.logOut = logOut;
 
       function setSort(sortBy){
         postsService.sort.criteria = sortBy;
@@ -47,6 +49,11 @@
         vm.post = {};
         myForm.$setPristine();
         myForm.$setUntouched();
+      }
+
+      function logOut () {
+        accountService.logOut()
+        return
       }
 
     }
