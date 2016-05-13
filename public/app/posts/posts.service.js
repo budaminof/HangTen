@@ -23,18 +23,6 @@
         updateVote: updateVote
       }
 
-      function updateVote (post, direction) {
-        if(direction == 'up'){
-          return $http.post('/api/v1/posts/'+ post.id +'/voteup', post).then(function (res){
-              return res;
-          })
-        } else {
-          return $http.post('/api/v1/posts/'+ post.id +'/votedown', post).then(function (res){
-            return res;
-          })
-        }
-      }
-      
       function addPost(post){
         post.votes = 0;
         post.user_id = 2;
@@ -62,6 +50,18 @@
         _activePost.comments.push(comment);
         _activePost = null;
         return
+      }
+
+      function updateVote (post, direction) {
+        if(direction == 'up'){
+          return $http.post('/api/v1/posts/'+ post.id +'/voteup', post).then(function (res){
+              return res;
+          })
+        } else {
+          return $http.post('/api/v1/posts/'+ post.id +'/votedown', post).then(function (res){
+            return res;
+          })
+        }
       }
 
     }
