@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var knex = require('knex')(require('../knexfile')[process.env.DB_ENV || 'development']);
 
-router.get('/', function(req, res, next) {
+router.get('/api/v1/posts', function(req, res, next) {
   var _posts = [];
 
    knex('posts')
@@ -18,6 +18,7 @@ router.get('/', function(req, res, next) {
         image_url: item.image_url,
         votes: item.votes,
         username: item.username,
+        create_at: item.create_at,
         comments: []
       })
     })
