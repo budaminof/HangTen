@@ -16,7 +16,6 @@
       return {
         addPost: addPost,
         getPosts: getPosts,
-        makeAComment: makeAComment,
         submitComment: submitComment,
         sort: {criteria: "-date"},
         search: {query: ""},
@@ -41,21 +40,18 @@
         });
       }
 
-      function makeAComment(post){
-        _activePost = post;
-        return
-      }
-
-      function submitComment(comment){
+      function submitComment(comment) {
         return $http.post('/api/v1/posts/'+ comment.post_id +'/comments/add', comment)
           .then(function (res){
              comment.username = "friend";
              comment.create_at = res.data.create_at;
+
              _posts.forEach(function (post){
                if (post.id === comment.post_id){
                  post.comments.push(comment)
                }
              })
+
             return _posts
           })
       }

@@ -76,7 +76,6 @@ router.post('/api/v1/posts/:postId/comments/add', function(req, res, next) {
   .insert(req.body)
   .returning('*')
   .then(function(comment){
-    console.log('in route comment added', comment);
     return res.json(comment[0]);
   })
 });

@@ -55,7 +55,6 @@
 
       function makeAComment (post){
         vm.activePostId = post.id;
-        postsService.makeAComment(post)
         return
       }
 
@@ -78,7 +77,7 @@
         form.$setUntouched();
         return
       }
-      
+
     }
 
 })();
