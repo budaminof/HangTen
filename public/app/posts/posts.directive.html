@@ -16,7 +16,8 @@
           ( <span ng-bind="post.comments.length"></span> ) </span> | <span class="clickable" ng-click="vm.makeAComment(post)" aria-hidden="true" data-toggle="modal" data-target=".comment-modal"><span class="glyphicon glyphicon-pencil"></span>Add a comment</span></p>
 
             <div class="comments" ng-repeat="comment in post.comments" ng-show="post.show">
-              <p><h4 ng-bind="comment.author"></h4><p ng-bind="comment.text"></p></p>
+              <p><h4 ng-bind="comment.username"></h4><p ng-bind="comment.comment"></p>
+            <p ng-bind="comment.create_at"></p></p>
             </div>
 
         </div>
