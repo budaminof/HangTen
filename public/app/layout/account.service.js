@@ -29,15 +29,14 @@
     function login (user) {
       return $http.post('/api/v1/users/login', user)
       .then(function (res){
-        $window.localStorage.setItem('token', res.data.token)
+        $window.localStorage.setItem('token', res.data.token);
         $state.go('posts');
-
       })
     }
 
     function logOut (){
       $window.localStorage.clear();
-      $state.go('posts');
+      $state.go('login');
     }
 
   }

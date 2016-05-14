@@ -81,13 +81,8 @@ router.post('/login', function (req, res, next) {
         })
       }
 
-      })
-
+    })
   }
-})
+});
 
 module.exports = router;
-
-// budbud
-// test
-// bud@ex.com

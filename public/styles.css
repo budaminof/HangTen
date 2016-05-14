@@ -42,13 +42,12 @@ nav button {
   margin-top: 80px;
 }
 
-.modal-header{
+.modal-header {
   background: rgb(67, 142, 77);
   color: white;
 }
 
-.modal-backdrop
-{
+.modal-backdrop {
     opacity:0.7 !important;
 }
 
@@ -91,7 +90,7 @@ nav button {
  -ms-user-select: none;       /* Internet Explorer/Edge */
 }
 
-.glyphicon:hover, .addPost {
+.glyphicon:hover, .addPost , .makePointer{
  cursor: pointer;
 }
 

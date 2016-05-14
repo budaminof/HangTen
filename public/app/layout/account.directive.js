@@ -27,7 +27,7 @@
         }
 
         function loginSubmit(form) {
-          var loggedUser = angular.copy(vm.userlog.name);
+          var loggedUser = angular.copy(vm.userlog);
           return accountService.login(loggedUser);
         }
       }
