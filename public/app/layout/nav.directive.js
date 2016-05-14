@@ -17,17 +17,20 @@
     navController.$inject = [
       '$log',
       'postsService',
-      'accountService'
+      'accountService',
+      'currentUserService'
     ];
 
-    function navController ($log, postsService, accountService) {
+    function navController ($log, postsService, accountService, currentUserService) {
       var vm = this;
+      vm.user = currentUserService.getCurrentUser();
       vm.post = {};
       vm.formSubmit = formSubmit;
       vm.formClose = formClose;
       vm.setSort = setSort;
-      vm.search = postsService.search ;
+      vm.search = postsService.search;
       vm.logOut = logOut;
+
 
       function setSort(sortBy){
         postsService.sort.criteria = sortBy;

@@ -16,12 +16,11 @@
 
     postsController.$inject = [
       'postsService',
-      '$log'
+      '$log',
     ];
 
     function postsController (postsService, $log) {
       var vm = this;
-
       postsService.getPosts().then(function (posts){
         return vm.posts = posts;
       });

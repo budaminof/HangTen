@@ -32,6 +32,7 @@
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li><a ui-sref="me">Hello <span ng-bind="vm.user.username"></span></a></li>
           <li><a ui-sref="login">LogIn</a></li>
           <li><a ui-sref="signup">SignUp</a></li>
           <li class="makePointer"><a ng-click="vm.logOut()">LogOut</a></li>

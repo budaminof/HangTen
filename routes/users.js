@@ -4,6 +4,31 @@ const knex = require('knex')(require('../knexfile')[process.env.DB_ENV || 'devel
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+router.get('/me', function (req, res, next) {
+
+  if (req.headers.authorization) {
+     const token = req.headers.authorization.split(' ')[1];
+     const payload = jwt.verify(token, process.env.JWT_SECRET);
+
+     knex('users')
+     .where({user_id: payload.user_id})
+     .first()
+     .then(function (user) {
+       if (user) {
+         res.json({user_id: user.user_id, username: user.username})
+       } else {
+         res.status(403).json({
+           error: "Invalid ID"
+         })
+       }
+     })
+   } else {
+  res.status(403).json({
+    error: "WHERE IS YOUR **** TOKEN??"
+  })
+}
+});
+
 router.post('/signup', function (req, res, next) {
   const errors = []
 
@@ -84,5 +109,6 @@ router.post('/login', function (req, res, next) {
     })
   }
 });
+
 
 module.exports = router;

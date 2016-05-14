@@ -14,7 +14,10 @@
         }
       }
 
-      accountController.$inject = ['$log', 'accountService']
+      accountController.$inject = [
+        '$log',
+        'accountService'
+      ];
 
       function accountController($log, accountService) {
         var vm = this;
