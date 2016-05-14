@@ -23,14 +23,17 @@
 
     function navController ($log, postsService, accountService, currentUserService) {
       var vm = this;
-      vm.user = currentUserService.getCurrentUser();
+      currentUserService.getCurrentUser()
+        .then(function (user) {
+          vm.user = user
+          return vm.user
+        })
       vm.post = {};
       vm.formSubmit = formSubmit;
       vm.formClose = formClose;
       vm.setSort = setSort;
       vm.search = postsService.search;
       vm.logOut = logOut;
-
 
       function setSort(sortBy){
         postsService.sort.criteria = sortBy;

@@ -2,25 +2,27 @@
   'use strict';
 
   angular.module('app')
-  .factory('currentUserService', currentUserFactory);
+    .factory('currentUserService', activeUserFactory);
 
-  currentUserFactory.$inject = ['$log'];
+    activeUserFactory.$inject = ['$log', '$q'];
 
-  function currentUserFactory ($log) {
-    var _user = {};
+    function activeUserFactory ($log, $q) {
+      var _user = {};
 
-    return {
-      setCurrentUser: setCurrentUser,
-      getCurrentUser: getCurrentUser
-    }
+      return {
+        setCurrentUser: setCurrentUser,
+        getCurrentUser: getCurrentUser
+      }
 
      function setCurrentUser (user){
-       _user = user;
-       return
+       return  _user = user;
+
      }
 
      function getCurrentUser (){
-       return _user;
+       return $q(function (resolve, reject) {
+           resolve( _user)
+       })
      }
 
   }

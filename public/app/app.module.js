@@ -1,6 +1,5 @@
 (function() {
   'use strict';
-
   var dependencies = [
     'ngAnimate',
     'ngMessages',
@@ -48,7 +47,6 @@
         }
         })
 
-
       }
 
       function currentUserFn ($http, currentUserService) {
@@ -64,8 +62,10 @@
           })
           .catch(function () {
             localStorage.clear();
-            return null;
+            return currentUserService.setCurrentUser(null);;
           })
+        } else {
+          return currentUserService.setCurrentUser(null);;
         }
       }
 

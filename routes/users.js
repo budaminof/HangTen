@@ -92,19 +92,25 @@ router.post('/login', function (req, res, next) {
     .whereRaw('lower(email) = ?', req.body.email.toLowerCase())
     .first()
     .then(function (user){
-      if(bcrypt.compareSync(req.body.password, user.password)) {
-        const token = jwt.sign({ user_id: user.user_id }, process.env.JWT_SECRET);
-        res.json({
-          user_id: user.id,
-          username: user.username,
-          email: user.email,
-          token: token
+      if(!user){
+        res.status(400).json({
+          errors: ['Invalid Email.']
         })
       } else {
-        res.status(400).json({
-          errors: ['Wrong password.']
-        })
-      }
+        if(bcrypt.compareSync(req.body.password, user.password)) {
+          const token = jwt.sign({ user_id: user.user_id }, process.env.JWT_SECRET);
+          res.json({
+            user_id: user.id,
+            username: user.username,
+            email: user.email,
+            token: token
+          })
+        } else {
+          res.status(400).json({
+            errors: ['Wrong password.']
+              })
+            }
+        }
 
     })
   }

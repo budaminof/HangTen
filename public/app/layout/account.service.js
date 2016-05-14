@@ -22,7 +22,7 @@
       return $http.post('/api/v1/users/signup', user)
       .then(function (res){
         $window.localStorage.setItem('token', res.data.token)
-        $state.go('posts');
+        $state.go('posts', {}, {reload:true});
       })
     }
 
@@ -30,13 +30,13 @@
       return $http.post('/api/v1/users/login', user)
       .then(function (res){
         $window.localStorage.setItem('token', res.data.token);
-        $state.go('posts');
+        $state.go('posts', {}, {reload:true});
       })
     }
 
     function logOut (){
       $window.localStorage.clear();
-      $state.go('login');
+      $state.go('login', {}, {reload:true});
     }
 
   }
