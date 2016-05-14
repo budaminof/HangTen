@@ -19,11 +19,16 @@
       function accountController($log, accountService) {
         var vm = this;
         vm.signUpSubmit = signUpSubmit;
+        vm.loginSubmit = loginSubmit;
 
-        function signUpSubmit (form){
+        function signUpSubmit (form) {
           var newUser = angular.copy(vm.user);
-          return accountService.createUser(newUser)
+          return accountService.createUser(newUser);
         }
 
+        function loginSubmit(form) {
+          var loggedUser = angular.copy(vm.userlog.name);
+          return accountService.login(loggedUser);
+        }
       }
 }());

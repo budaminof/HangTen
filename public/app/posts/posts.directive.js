@@ -54,7 +54,7 @@
       }
 
       function makeAComment (post){
-        vm.activePostId = post.id;
+        vm.activePostId = post.post_id;
         return
       }
 

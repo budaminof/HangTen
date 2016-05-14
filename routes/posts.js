@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var knex = require('knex')(require('../knexfile')[process.env.DB_ENV || 'development']);
 
-router.get('/api/v1/posts', function(req, res, next) {
+router.get('/', function(req, res, next) {
   var _posts = [];
 
    knex('posts')
@@ -12,7 +12,7 @@ router.get('/api/v1/posts', function(req, res, next) {
 
     data.forEach(function (item){
       _posts.push({
-        id: item.post_id,
+        post_id: item.post_id,
         title: item.title,
         description: item.description,
         image_url: item.image_url,
@@ -32,7 +32,7 @@ router.get('/api/v1/posts', function(req, res, next) {
 
       _posts.forEach(function (postItem){
         dataComments.forEach(function (commentItem){
-          if(postItem.id === commentItem.post_id){
+          if(postItem.post_id === commentItem.post_id){
             postItem.comments.push(commentItem)
           }
         })
@@ -42,7 +42,7 @@ router.get('/api/v1/posts', function(req, res, next) {
 
 });
 
-router.post('/api/v1/posts/add', function(req, res, next) {
+router.post('/add', function(req, res, next) {
   knex('posts')
   .insert(req.body)
   .returning('*')
@@ -51,7 +51,7 @@ router.post('/api/v1/posts/add', function(req, res, next) {
   })
 });
 
-router.post('/api/v1/posts/:postId/voteup', function(req, res, next) {
+router.post('/:postId/voteup', function(req, res, next) {
   knex('posts')
   .where({post_id: req.params.postId})
   .increment('votes', 1)
@@ -61,7 +61,7 @@ router.post('/api/v1/posts/:postId/voteup', function(req, res, next) {
   })
 });
 
-router.post('/api/v1/posts/:postId/votedown', function(req, res, next) {
+router.post('/:postId/votedown', function(req, res, next) {
   knex('posts')
   .where({post_id: req.params.postId})
   .decrement('votes', 1)
@@ -71,7 +71,7 @@ router.post('/api/v1/posts/:postId/votedown', function(req, res, next) {
   })
 });
 
-router.post('/api/v1/posts/:postId/comments/add', function(req, res, next) {
+router.post('/:postId/comments/add', function(req, res, next) {
   knex('comments')
   .insert(req.body)
   .returning('*')
@@ -80,7 +80,7 @@ router.post('/api/v1/posts/:postId/comments/add', function(req, res, next) {
   })
 });
 
-router.delete('/api/v1/posts/:postId', function(req, res, next) {
+router.delete('/:postId', function(req, res, next) {
   knex('posts')
   .where({post_id: req.params.postId})
   .first()
@@ -93,7 +93,7 @@ router.delete('/api/v1/posts/:postId', function(req, res, next) {
   })
 });
 
-router.delete('/api/v1/comments/:commentId', function(req, res, next) {
+router.delete('/comments/:commentId', function(req, res, next) {
   knex('comments')
   .where({comment_id: req.params.commentId})
   .first()
