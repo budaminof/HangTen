@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 router.get('/me', function (req, res, next) {
-
   if (req.headers.authorization) {
      const token = req.headers.authorization.split(' ')[1];
      const payload = jwt.verify(token, process.env.JWT_SECRET);
@@ -23,8 +22,8 @@ router.get('/me', function (req, res, next) {
        }
      })
    } else {
-  res.status(403).json({
-    error: "WHERE IS YOUR **** TOKEN??"
+  res.status(200).json({
+    msg: "Its fine that you don't have a token right now.."
   })
 }
 });
