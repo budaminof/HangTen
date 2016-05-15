@@ -42,11 +42,12 @@
 
       function formSubmit (myForm) {
         var newPost = angular.copy(vm.post);
+        newPost.user_id = vm.user.user_id;
         myForm.$setPristine();
         myForm.$setUntouched();
         vm.post = {};
 
-        postsService.addPost(newPost).then(function (res){
+        postsService.addPost(newPost, vm.user.username).then(function (res){
           return res;
         })
       }

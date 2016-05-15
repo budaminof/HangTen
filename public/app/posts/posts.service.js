@@ -24,11 +24,10 @@
         deleteComment: deleteComment
       }
 
-      function addPost(post){
+      function addPost(post, name){
         post.votes = 0;
-        post.user_id = 2;
         return $http.post('/api/v1/posts/add', post).then(function (newPost){
-          newPost.data.username = "Lincoln the awesome";
+          newPost.data.username = name;
           newPost.data.comments = [];
           _posts.push(newPost.data);
           return _posts;
@@ -42,10 +41,10 @@
         });
       }
 
-      function submitComment(comment) {
+      function submitComment(comment, name) {
         return $http.post('/api/v1/posts/'+ comment.post_id +'/comments/add', comment)
           .then(function (res){
-             comment.username = "friend";
+             comment.username = name;
              comment.create_at = res.data.create_at;
              comment.comment_id = res.data.comment_id;
 

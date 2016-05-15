@@ -17,13 +17,21 @@
     postsController.$inject = [
       'postsService',
       '$log',
+      'currentUserService'
     ];
 
-    function postsController (postsService, $log) {
+    function postsController (postsService, $log, currentUserService) {
       var vm = this;
+
       postsService.getPosts().then(function (posts){
         return vm.posts = posts;
       });
+
+      currentUserService.getCurrentUser()
+        .then(function (user) {
+          vm.user = user
+          return vm.user
+        })
 
       vm.voteUp = voteUp;
       vm.voteDown = voteDown;
@@ -60,9 +68,9 @@
       function commentSubmit (form) {
         var newComment = angular.copy(vm.comment);
         newComment.post_id = vm.activePostId;
-        newComment.user_id = 3;
+        newComment.user_id = vm.user.user_id;
 
-        postsService.submitComment(newComment)
+        postsService.submitComment(newComment, vm.user.username)
         vm.comment = {};
         vm.activePostId = null;
         form.$setPristine();
