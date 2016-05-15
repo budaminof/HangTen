@@ -22,17 +22,6 @@
 
     function postsController (postsService, $log, currentUserService) {
       var vm = this;
-
-      postsService.getPosts().then(function (posts){
-        return vm.posts = posts;
-      });
-
-      currentUserService.getCurrentUser()
-        .then(function (user) {
-          vm.user = user
-          return vm.user
-        })
-
       vm.voteUp = voteUp;
       vm.voteDown = voteDown;
       vm.commentShow = commentShow;
@@ -44,6 +33,15 @@
       vm.activePostId = '';
       vm.deletePost = deletePost;
       vm.deleteComment = deleteComment;
+
+      postsService.getPosts().then(function (posts){
+        return vm.posts = posts;
+      });
+      currentUserService.getCurrentUser()
+      .then(function (user) {
+        vm.user = user
+        return vm.user
+      })
 
       function voteUp (post) {
         postsService.updateVote(post, 'up');
