@@ -11,7 +11,6 @@
     .config(setupRoutes)
     .run(function ($rootScope, $state, $window, $location) {
       $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
-
         if(toState.publicOnly && localStorage.getItem('token')) {
           event.preventDefault();
           $state.go('posts')
@@ -23,8 +22,10 @@
         request: function (config) {
           if (localStorage.getItem('token')) {
               config.headers.Authorization = 'Bearer ' + localStorage.getItem('token');
+              return config
+            } else {
+              return config;
             }
-          return config
         },
         responseError: function (response) {
           if (response.status === 403){

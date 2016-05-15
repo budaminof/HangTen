@@ -147,3 +147,7 @@ nav button {
 .account-portal {
   margin-top: 100px;
 }
+
+.error {
+  color:red;
+}
