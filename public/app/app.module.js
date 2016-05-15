@@ -8,12 +8,46 @@
   ];
 
   angular.module('app', dependencies)
-    .config(setupRoutes);
+    .config(setupRoutes)
+    .run(function ($rootScope, $state, $window, $location) {
+      $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
 
-  setupRoutes.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
+        if(toState.publicOnly && localStorage.getItem('token')) {
+          event.preventDefault();
+          $state.go('posts')
+        }
+      });
+    })
+    .factory('authInterceptor', function ($location) {
+      return {
+        request: function (config) {
+          if (localStorage.getItem('token')) {
+              config.headers.Authorization = 'Bearer ' + localStorage.getItem('token');
+            }
+          return config
+        },
+        responseError: function (response) {
+          if (response.status === 403){
+            localStorage.removeItem('token');
+            $location.path('/')
+            // event.preventDefault();
+            // $state.go('posts')
+          }
+          return response
 
-  function setupRoutes($stateProvider, $urlRouterProvider, $locationProvider) {
+        }
+      }
+    })
 
+  setupRoutes.$inject = [
+    '$stateProvider',
+    '$urlRouterProvider',
+    '$locationProvider',
+    '$httpProvider'
+  ];
+
+  function setupRoutes($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    $httpProvider.interceptors.push('authInterceptor');
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise("/");
 
@@ -34,6 +68,7 @@
         template: "<reddit-account></reddit-account>",
         parent: 'app',
         url: "/login",
+        publicOnly: true,
         resolve: {
           currentUser: currentUserFn
         }
@@ -42,6 +77,7 @@
         template: "<reddit-account></reddit-account>",
         parent: 'app',
         url: "/signup",
+        publicOnly: true,
         resolve: {
           currentUser: currentUserFn
         }
@@ -49,24 +85,15 @@
 
       }
 
-      function currentUserFn ($http, currentUserService) {
-        if (localStorage.getItem('token')) {
-          const config = {
-            headers: {
-              'Authorization': 'Bearer ' + localStorage.getItem('token')
-            }
-          }
-          return $http.get('/api/v1/users/me', config)
-          .then(function (response) {
-            return currentUserService.setCurrentUser(response.data);
-          })
-          .catch(function () {
-            localStorage.clear();
-            return currentUserService.setCurrentUser(null);;
-          })
-        } else {
-          return currentUserService.setCurrentUser(null);;
-        }
-      }
+  function currentUserFn ($http, currentUserService) {
+      return $http.get('/api/v1/users/me')
+      .then(function (response) {
+        return currentUserService.setCurrentUser(response.data);
+      })
+      .catch(function () {
+        localStorage.clear();
+        return currentUserService.setCurrentUser(null);;
+      })
+    }
 
 })();
