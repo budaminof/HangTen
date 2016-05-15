@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 
    knex('posts')
   .innerJoin('users', 'posts.user_id', 'users.user_id')
-  .select('posts.title', 'posts.description', 'posts.votes', 'posts.image_url', 'posts.create_at', 'users.username', 'posts.post_id')
+  .select('posts.title', 'posts.description', 'posts.votes', 'posts.image_url', 'posts.create_at', 'users.username', 'posts.post_id', 'posts.user_id')
   .then(function(data){
 
     data.forEach(function (item){
@@ -19,6 +19,7 @@ router.get('/', function(req, res, next) {
         votes: item.votes,
         username: item.username,
         create_at: item.create_at,
+        user_id: item.user_id,
         comments: []
       })
     })
@@ -26,7 +27,7 @@ router.get('/', function(req, res, next) {
 
     return knex('comments')
     .innerJoin('users', 'comments.user_id', 'users.user_id')
-    .select('users.username', 'comments.comment', 'comments.post_id', 'comments.create_at', 'comments.comment_id')
+    .select('users.username', 'comments.comment', 'comments.post_id', 'comments.create_at', 'comments.comment_id', 'comments.user_id')
     })
     .then(function (dataComments) {
 

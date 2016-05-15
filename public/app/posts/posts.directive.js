@@ -33,6 +33,7 @@
       vm.activePostId = '';
       vm.deletePost = deletePost;
       vm.deleteComment = deleteComment;
+      vm.showDelete = showDelete
 
       postsService.getPosts().then(function (posts){
         return vm.posts = posts;
@@ -92,6 +93,18 @@
         postsService.deleteComment(comment);
         post.show = false;
         return
+      }
+
+      function showDelete(data) {
+        // console.log('in delete show', data);
+        // console.log('user id', vm.user.user_id);
+        // console.log('posst id', data.user_id);
+        if(!vm.user)return false;
+        if(data.user_id === vm.user.user_id){
+          return true;
+        }else {
+          return false;
+        }
       }
 
     }

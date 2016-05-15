@@ -13,11 +13,11 @@
           <ng-pluralize count="post.comments.length"
             when="{'1': 'View Comment','other': 'View Comments'}">
           </ng-pluralize>
-          ( <span ng-bind="post.comments.length"></span> ) </span> | <span class="clickable" ng-click="vm.makeAComment(post)" aria-hidden="true" data-toggle="modal" data-target=".comment-modal"><span class="glyphicon glyphicon-pencil"></span>Add a comment</span> | <span class="addPost" ng-click="vm.deletePost(post)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete post</span></p>
+          ( <span ng-bind="post.comments.length"></span> ) </span> | <span class="clickable" ng-click="vm.makeAComment(post)" aria-hidden="true" data-toggle="modal" data-target=".comment-modal"><span class="glyphicon glyphicon-pencil"></span>Add a comment</span><span ng-show="vm.showDelete(post)" class="addPost" ng-click="vm.deletePost(post)"><span class="glyphicon glyphicon-trash"></span>| Delete post</span></p>
 
             <div class="comments" ng-repeat="comment in post.comments" ng-show="post.show">
              <p><strong><span ng-bind="comment.username"></span></strong>: <span ng-bind="comment.comment"></span></p>
-             <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"> </span> {{comment.create_at | amCalendar}} | <span class="makePointer" ng-click="vm.deleteComment(comment, post)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete This Comment</span></p>
+             <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"> </span> {{comment.create_at | amCalendar}} <span ng-show="vm.showDelete(comment)" class="makePointer" ng-click="vm.deleteComment(comment, post)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> | Delete This Comment</span></p>
             </div>
 
         </div>
