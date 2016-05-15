@@ -24,6 +24,7 @@
     }
 
     function createUser (user){
+      _errorsUp.length = 0;
       return $http.post('/api/v1/users/signup', user)
       .then(function (res){
         if(!(res.status === 200)){
@@ -40,6 +41,7 @@
     }
 
     function login (user) {
+      _error.length = 0;
       return $http.post('/api/v1/users/login', user)
       .then(function (res){
         if(!(res.status === 200)){
