@@ -5,64 +5,64 @@ exports.seed = function(knex, Promise) {
 
     knex('posts')
      .insert({
-       title:  '"How did you make it search as you typed?"',
+       title:  'Longborading in the California',
        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
        votes: 23,
-       image_url: 'http://i.imgur.com/WS3aUSl.png',
+       image_url: 'https://s-media-cache-ak0.pinimg.com/736x/c3/1c/5b/c31c5bba4051bb8dc018b9244dec17e8.jpg',
        user_id: 1
       //  created_at: new Date("April 3, 2016")
      }),
    knex('posts')
      .insert({
-       title:  'Good Guy Akyuna',
+       title:  'San Diego Longboarding',
        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
        votes: 10,
-       image_url: 'http://i.imgur.com/6FKyxPi.png',
+       image_url: 'http://indosurflife.com/wp-content/uploads/2012/04/LongboardSurfGirl.jpg',
        user_id: 2
       //  created_at: new Date("March 25, 2016")
      }),
    knex('posts')
      .insert({
-       title:  "When the Page Doesn't Load",
+       title:  "La Punta",
        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
        votes: 13,
-       image_url: 'http://i.imgur.com/8A4fvHL.png',
+       image_url: 'http://www.surfertoday.com/images/stories/playacoco.jpg',
        user_id: 3
       //  created_at: new Date("March 24, 2016")
      }),
    knex('posts')
      .insert({
-       title:  'When I Ask A Question',
+       title:  'Bali',
        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
        votes: 35,
-       image_url: 'http://i.imgur.com/dhmZJ8E.png',
+       image_url: 'http://www.surfertoday.com/images/stories/surfingmaldives2.jpg',
        user_id: 1
       //  created_at: new Date("March 02, 2016")
      }),
    knex('posts')
      .insert({
-       title:  'A Valid Question',
+       title:  'There is a spot next to Google offices..',
        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
        votes: 10,
-       image_url: 'http://i.imgur.com/PZthqMa.png',
+       image_url: 'http://www.surfingmagazine.com/files/2010/03/line-up-545x371.jpg',
        user_id: 2
       //  created_at: new Date("May 5, 2016")
      }),
    knex('posts')
      .insert({
-       title:  'Styling with Bootstrap like....',
+       title:  'find your true north',
        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
        votes: 4,
-       image_url: 'http://i.imgur.com/ycARl6n.png',
+       image_url: 'http://www.yeity.com/Photo%20Essays/Surfing%20Destinations/Lofotan1.jpg',
        user_id: 3,
       //  created_at: new Date("March 9, 2016")
      }),
    knex('posts')
      .insert({
-       title:  'After coding for 4 hours straight...',
+       title:  'Costa Rica',
        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula fermentum neque et congue. Vestibulum sed nulla dictum, accumsan nulla a, mattis tortor. Mauris purus risus, maximus ac risus quis, suscipit sagittis lectus. Nulla sit amet pulvinar lorem. Integer in sapien finibus, scelerisque lacus eget, malesuada diam.",
        votes: 13,
-       image_url: 'http://i.imgur.com/cIoDQQA.png',
+       image_url: 'http://surfspots.ie/images/homebanner2.jpg',
        user_id: 2
       //  created_at: new Date("February 26, 2016")
      })

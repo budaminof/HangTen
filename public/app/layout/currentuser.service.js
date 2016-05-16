@@ -20,9 +20,10 @@
      }
 
      function getCurrentUser (){
-       return $q(function (resolve, reject) {
-           resolve( _user)
-       })
+       return _user;
+      //  return $q(function (resolve, reject) {
+          //  resolve( _user)
+      //  })
      }
 
   }

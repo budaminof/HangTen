@@ -1,6 +1,6 @@
 <main class="container-fluid col-md-12">
   <section ng-repeat="post in vm.posts | orderBy : vm.sort.criteria | filter : vm.search.query" class="col-md-10 col-md-offset-1 post">
-    <article class="jumbotron row">
+    <article class="box row">
       <div class="col-md-3 thumbnail">
         <img ng-src="{{post.image_url}}" alt="image">
       </div>
@@ -13,7 +13,7 @@
           <ng-pluralize count="post.comments.length"
             when="{'1': 'View Comment','other': 'View Comments'}">
           </ng-pluralize>
-          ( <span ng-bind="post.comments.length"></span> ) </span> | <span class="clickable" ng-click="vm.makeAComment(post)" aria-hidden="true" data-toggle="modal" data-target=".comment-modal"><span class="glyphicon glyphicon-pencil"></span>Add a comment</span><span ng-show="vm.showDelete(post)" class="addPost" ng-click="vm.deletePost(post)"> | <span class="glyphicon glyphicon-trash"></span> Delete post</span></p>
+          ( <span ng-bind="post.comments.length"></span> ) </span><span ng-show="vm.user.user_id" class="clickable" ng-click="vm.makeAComment(post)" aria-hidden="true" data-toggle="modal" data-target=".comment-modal"><span class="glyphicon glyphicon-pencil"></span> | Add a comment</span><span ng-show="vm.showDelete(post)" class="addPost" ng-click="vm.deletePost(post)"> | <span class="glyphicon glyphicon-trash"></span> Delete post</span></p>
 
             <div class="comments" ng-repeat="comment in post.comments" ng-show="post.show">
              <p><strong><span ng-bind="comment.username"></span></strong>: <span ng-bind="comment.comment"></span></p>

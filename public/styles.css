@@ -25,13 +25,17 @@ main {
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover  {
   background: rgb(209, 233,239);
 }
+
 .navbar {
   background: rgb(209, 233,239);
   border-bottom: 2px solid black;
 }
 
-.jumbotron {
-  background-color: rgb(209, 233,239);
+.box {
+  padding: 10px;
+  margin: 5px;
+  background-color: rgb(255, 255, 255);
+  border-bottom: rgb(209, 233,239) 2px solid;
 }
 
 nav button {

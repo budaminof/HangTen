@@ -17,10 +17,11 @@
     postsController.$inject = [
       'postsService',
       '$log',
-      'currentUserService'
+      'currentUserService',
+      '$scope'
     ];
 
-    function postsController (postsService, $log, currentUserService) {
+    function postsController (postsService, $log, currentUserService, $scope) {
       var vm = this;
       vm.voteUp = voteUp;
       vm.voteDown = voteDown;
@@ -33,16 +34,23 @@
       vm.activePostId = '';
       vm.deletePost = deletePost;
       vm.deleteComment = deleteComment;
-      vm.showDelete = showDelete
+      vm.showDelete = showDelete;
+      vm.user = currentUserService.getCurrentUser();
 
       postsService.getPosts().then(function (posts){
         return vm.posts = posts;
       });
-      currentUserService.getCurrentUser()
-      .then(function (user) {
-        vm.user = user
-        return vm.user
-      })
+
+      // currentUserService.getCurrentUser()
+      // .then(function (user) {
+      //   vm.user = user
+      //   return vm.user
+      // })
+      // $scope.$watch(function(){
+      //   return currentUserService.getCurrentUser();
+      // }, function(newValue){
+      //   vm.user = newValue;
+      // }, true);
 
       function voteUp (post) {
         postsService.updateVote(post, 'up');

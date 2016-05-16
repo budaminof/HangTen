@@ -41,7 +41,7 @@
     }
 
     function login (user) {
-      _error.length = 0;
+      _errors.length = 0;
       return $http.post('/api/v1/users/login', user)
       .then(function (res){
         if(!(res.status === 200)){
