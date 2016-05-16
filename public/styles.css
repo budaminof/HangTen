@@ -1,34 +1,47 @@
+.mainBody {
+  display: flex;
+  min-height: 96vh;
+  flex-direction: column;
+}
+
 main {
   margin-top: 80px;
 }
 
 #navHeader, #sort {
-  color:black;
+  color:white;
 }
 
 #sort {
   font-size: 1.3em;
 }
 
+.navbar-default .navbar-nav>li>a {
+  color: white;
+  font-size: 18px;
+}
+
 #collapsBtn {
   border: 1px black solid;
 }
 
-@media (max-width: 690px) {
+/*@media (max-width: 690px) {*/
   #bs-example-navbar-collapse-1 {
-    width: 70%;
-    margin-left: 30px;
+    /*width: 70%;
+    margin-left: 30px;*/
+    background: rgb(31, 158, 162);
   }
+/*}*/
 
-}
-
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover  {
-  background: rgb(209, 233,239);
-}
+/*.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover  {
+  color: black;
+}*/
 
 .navbar {
-  background: rgb(209, 233,239);
+  background: rgb(31, 158, 162);
   border-bottom: 2px solid black;
+  padding-top: 10px;
+  height: 80px;
 }
 
 .box {
@@ -47,12 +60,12 @@ nav button {
 }
 
 .modal-header {
-  background: rgb(67, 142, 77);
+  background: rgb(92, 176, 179);
   color: white;
 }
 
 .modal-backdrop {
-    opacity:0.7 !important;
+  opacity:0.7 !important;
 }
 
 .btnGreen {
@@ -84,7 +97,6 @@ nav button {
 }
 
 .glyphicon {
-
  font-size: 1.1em;
  color: rgb(24, 42, 83);
  -webkit-touch-callout: none; /* iOS Safari */
@@ -154,4 +166,10 @@ nav button {
 
 .error {
   color:red;
+}
+
+footer {
+  background-color: rgb(31, 158, 162);
+  color: rgb(255, 255, 255);
+  height:70px;
 }
