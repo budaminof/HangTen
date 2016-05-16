@@ -45,7 +45,13 @@ router.get('/', function(req, res, next) {
 
 router.post('/add', authorization, function(req, res, next) {
   knex('posts')
-  .insert(req.body)
+  .insert({
+    user_id: req.body.user_id,
+    title: req.body.title,
+    description: req.body.description,
+    votes: req.body.votes,
+    image_url: req.body.image_url
+  })
   .returning('*')
   .then(function(newPost){
     return res.json(newPost[0]);
@@ -74,7 +80,11 @@ router.post('/:postId/votedown', authorization, function(req, res, next) {
 
 router.post('/:postId/comments/add', authorization, function(req, res, next) {
   knex('comments')
-  .insert(req.body)
+  .insert({
+    user_id: req.body.user_id,
+    comment: req.body.comment,
+    post_id: req.body.post_id
+  })
   .returning('*')
   .then(function(comment){
     return res.json(comment[0]);
@@ -82,33 +92,47 @@ router.post('/:postId/comments/add', authorization, function(req, res, next) {
 });
 
 router.delete('/:postId', authorization, function(req, res, next) {
-  knex('posts')
-  .where({post_id: req.params.postId})
-  .first()
-  .del()
-  .then(function(response){
-    res.status(200).json({
-      msg: ['success delete']
-    });
-    return
-  })
+  if(req.body.currentUser){
+    knex('posts')
+    .where({
+      post_id: req.params.postId,
+      user_id: req.body.currentUser
+    })
+    .first()
+    .del()
+    .then(function(response){
+      res.status(200).json({
+        msg: ['success delete']
+      });
+      return
+    })
+  } else {
+    res.status(403).json({
+      error: ["You can't erase this post, its not yours!"]
+    })
+  }
 });
 
 router.delete('/comments/:commentId', authorization, function(req, res, next) {
-  console.log(req.body);
-  if(req.body.currentUser === req.params.commentId){
-
+  if(req.body.currentUser){
+    knex('comments')
+    .where({
+      comment_id: req.params.commentId,
+      user_id: req.body.currentUser
+    })
+    .first()
+    .del()
+    .then(function(response){
+      res.status(200).json({
+        msg: ['success delete comment']
+      });
+      return
+    })
+  } else {
+    res.status(403).json({
+      error: ["You can't erase this comment, its not yours!"]
+    })
   }
-  knex('comments')
-  .where({comment_id: req.params.commentId})
-  .first()
-  .del()
-  .then(function(response){
-    res.status(200).json({
-      msg: ['success delete comment']
-    });
-    return
-  })
 });
 
 function authorization (req, res, next) {
@@ -120,7 +144,7 @@ function authorization (req, res, next) {
     next();
   } else {
     res.status(403).json({
-      error: ["You must be logged in to vote!"]
+      error: ["Authorization error!"]
     })
   }
 
