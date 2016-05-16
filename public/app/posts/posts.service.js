@@ -21,7 +21,7 @@
         search: {query: ""},
         updateVote: updateVote,
         deletePost: deletePost,
-        deleteComment: deleteComment
+        deleteComment: deleteComment,
       }
 
       function addPost(post, name){
@@ -61,6 +61,9 @@
       function updateVote (post, direction) {
         if(direction == 'up'){
           return $http.post('/api/v1/posts/'+ post.post_id +'/voteup', post).then(function (res){
+            if(!(res.status === 200)){
+              return res;
+            }
               _posts.forEach(function (item){
                 if (item.post_id === post.post_id) {
                   item.votes ++
@@ -70,7 +73,11 @@
           })
         }
         else {
-          return $http.post('/api/v1/posts/'+ post.post_id +'/votedown', post).then(function (res){
+          return $http.post('/api/v1/posts/'+ post.post_id +'/votedown', post)
+          .then(function (res){
+            if(!(res.status === 200)){
+              return res;
+            }
             _posts.forEach(function (item){
               if (item.post_id === post.post_id) {
                 item.votes --

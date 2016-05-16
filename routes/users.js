@@ -17,13 +17,13 @@ router.get('/me', function (req, res, next) {
          res.json({user_id: user.user_id, username: user.username})
        } else {
          res.status(403).json({
-           error: "Invalid ID"
+           error: ["Invalid ID"]
          })
        }
      })
    } else {
   res.status(200).json({
-    msg: "Its fine that you don't have a token right now.."
+    msg: ["Its fine that you don't have a token right now.."]
   })
 }
 });

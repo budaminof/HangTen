@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('knex')(require('../knexfile')[process.env.DB_ENV || 'development']);
+const jwt = require('jsonwebtoken');
 
 router.get('/', function(req, res, next) {
   var _posts = [];
@@ -24,7 +25,6 @@ router.get('/', function(req, res, next) {
       })
     })
 
-
     return knex('comments')
     .innerJoin('users', 'comments.user_id', 'users.user_id')
     .select('users.username', 'comments.comment', 'comments.post_id', 'comments.create_at', 'comments.comment_id', 'comments.user_id')
@@ -43,7 +43,7 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.post('/add', function(req, res, next) {
+router.post('/add', authorization, function(req, res, next) {
   knex('posts')
   .insert(req.body)
   .returning('*')
@@ -52,7 +52,7 @@ router.post('/add', function(req, res, next) {
   })
 });
 
-router.post('/:postId/voteup', function(req, res, next) {
+router.post('/:postId/voteup', authorization, function(req, res, next) {
   knex('posts')
   .where({post_id: req.params.postId})
   .increment('votes', 1)
@@ -62,7 +62,7 @@ router.post('/:postId/voteup', function(req, res, next) {
   })
 });
 
-router.post('/:postId/votedown', function(req, res, next) {
+router.post('/:postId/votedown', authorization, function(req, res, next) {
   knex('posts')
   .where({post_id: req.params.postId})
   .decrement('votes', 1)
@@ -72,7 +72,7 @@ router.post('/:postId/votedown', function(req, res, next) {
   })
 });
 
-router.post('/:postId/comments/add', function(req, res, next) {
+router.post('/:postId/comments/add', authorization, function(req, res, next) {
   knex('comments')
   .insert(req.body)
   .returning('*')
@@ -81,31 +81,49 @@ router.post('/:postId/comments/add', function(req, res, next) {
   })
 });
 
-router.delete('/:postId', function(req, res, next) {
+router.delete('/:postId', authorization, function(req, res, next) {
   knex('posts')
   .where({post_id: req.params.postId})
   .first()
   .del()
   .then(function(response){
     res.status(200).json({
-      msg: 'success delete'
+      msg: ['success delete']
     });
     return
   })
 });
 
-router.delete('/comments/:commentId', function(req, res, next) {
+router.delete('/comments/:commentId', authorization, function(req, res, next) {
+  console.log(req.body);
+  if(req.body.currentUser === req.params.commentId){
+
+  }
   knex('comments')
   .where({comment_id: req.params.commentId})
   .first()
   .del()
   .then(function(response){
     res.status(200).json({
-      msg: 'success delete comment'
+      msg: ['success delete comment']
     });
     return
   })
 });
 
+function authorization (req, res, next) {
+  if(req.headers.authorization) {
+    const token = req.headers.authorization.split(' ')[1];
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    req.body.currentUser = payload.user_id;
+
+    next();
+  } else {
+    res.status(403).json({
+      error: ["You must be logged in to vote!"]
+    })
+  }
+
+}
 
 module.exports = router;

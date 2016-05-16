@@ -36,6 +36,7 @@
       vm.deleteComment = deleteComment;
       vm.showDelete = showDelete;
       vm.user = currentUserService.getCurrentUser();
+      // vm.errors = postsService.getErrors();
 
       postsService.getPosts().then(function (posts){
         return vm.posts = posts;
@@ -53,13 +54,23 @@
       // }, true);
 
       function voteUp (post) {
-        postsService.updateVote(post, 'up');
-        return
+        postsService.updateVote(post, 'up')
+        .then(function (res){
+          if(res.data){
+            return vm.errors = res.data.error[0];
+          }
+        });
+        return 
       }
 
        function voteDown (post) {
-        postsService.updateVote(post, 'down');
-        return
+        postsService.updateVote(post, 'down')
+        .then(function (res){
+          if(res.data){
+            return vm.errors = res.data.error[0];
+          }
+        });
+        return 
       }
 
       function commentShow (post) {

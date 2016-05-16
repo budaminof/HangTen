@@ -6,12 +6,12 @@
 
 [We even deployed!](https://morning-bayou-96723.herokuapp.com/)
 
-![](/redditclone.jpg)
 
 Our Entity-Relationship diagram:
 
 ![](/db.jpg)
 
+![](/redditclone.jpg)
 
 1. fork, clone.
 1. npm install,

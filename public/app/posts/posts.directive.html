@@ -1,4 +1,7 @@
 <main class="container-fluid col-md-12">
+  <div class="text-center error">
+    <h3 ng-bind="vm.errors"></h3>
+  </div>
   <section ng-repeat="post in vm.posts | orderBy : vm.sort.criteria | filter : vm.search.query" class="col-md-10 col-md-offset-1 post">
     <article class="box row">
       <div class="col-md-3 thumbnail">
