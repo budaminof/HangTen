@@ -3,7 +3,7 @@
 ##### Playing around with Angular.
 
 
-[Deploying with Heroku](https://morning-bayou-96723.herokuapp.com/)
+[Deploying with Heroku](https://hangten.herokuapp.com/)
 
 
 Entity-Relationship diagram:
