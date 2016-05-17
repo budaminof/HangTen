@@ -1,20 +1,18 @@
 ### README
 
-##### This is our first Angular project, and it was so much fun.
-##### This clone went through many refactoring-life-cycles.
+##### Playing around with Angular.
 
 
-[We even deployed!](https://morning-bayou-96723.herokuapp.com/)
+[Deploying with Heroku](https://morning-bayou-96723.herokuapp.com/)
 
 
-Our Entity-Relationship diagram:
+Entity-Relationship diagram:
 
 ![](/db.jpg)
 
-![](/redditclone.jpg)
-
 1. fork, clone.
-1. npm install,
+1. npm install.
+1. create your one db
 1. knex  migrate:latest
 1. knex seed:run
 1. create .env file
