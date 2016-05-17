@@ -21,7 +21,7 @@ If you want to try and run this by yourself (I take no responsibility if you do)
 
 with those keys:
 * DB_ENV=development
-* DATABASE_URL=  your_database_url  
-* JWT_SECRET=  your_made-up_secret_key 
+* DATABASE_URL= < your database url > 
+* JWT_SECRET= < your made-up secret key >
 
 Run nodmeon.
