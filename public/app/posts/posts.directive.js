@@ -36,7 +36,6 @@
       vm.deleteComment = deleteComment;
       vm.showDelete = showDelete;
       vm.user = currentUserService.getCurrentUser();
-      // vm.errors = postsService.getErrors();
 
       postsService.getPosts().then(function (posts){
         return vm.posts = posts;
@@ -59,8 +58,8 @@
           if(res.data){
             return vm.errors = res.data.error[0];
           }
+          return 
         });
-        return 
       }
 
        function voteDown (post) {
@@ -69,8 +68,8 @@
           if(res.data){
             return vm.errors = res.data.error[0];
           }
+          return
         });
-        return 
       }
 
       function commentShow (post) {

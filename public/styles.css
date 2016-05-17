@@ -8,47 +8,87 @@ main {
   margin-top: 80px;
 }
 
-#navHeader, #sort {
-  color:white;
+.navbar-brand {
+  font-size: 40px;
+  font-weight: lighter;
 }
 
-#sort {
-  font-size: 1.3em;
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: white;
 }
 
 .navbar-default .navbar-nav>li>a {
-  color: white;
-  font-size: 18px;
+    color: white;
+    font-size: 20px;
+    font-weight: lighter;
+    transition: all 0.5s ease;
 }
 
-#collapsBtn {
-  border: 1px black solid;
+.navbar-default .navbar-nav>li>a:hover {
+    color: white;
+    font-size: 30px;
+    font-weight: lighter;
 }
 
-/*@media (max-width: 690px) {*/
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle,
+ .navbar-default .navbar-toggle:hover {
+    background-color: white;
+    border: 1px black solid;
+}
+
+.navbar-default .navbar-toggle>.icon-bar {
+  background-color: rgb(31, 158, 162);
+}
+
+@media (max-width: 690px) {
   #bs-example-navbar-collapse-1 {
-    /*width: 70%;
-    margin-left: 30px;*/
-    background: rgb(31, 158, 162);
+    width: 70%;
+    margin-left: 30px;
   }
-/*}*/
+}
 
-/*.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover  {
-  color: black;
-}*/
+@media (max-width: 767px){
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: #ffffff;
+  }
+}
+
+@media (max-width: 767px){
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+    color: #ffffff;
+  }
+}
+
+@media (max-width: 767px){
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: #ffffff;
+    font-weight: lighter;
+    font-size: 20px;
+  }
+}
+
+.navbar-default .navbar-nav>.open>a,
+ .navbar-default .navbar-nav>.open>a:focus,
+ .navbar-default .navbar-nav>.open>a:hover {
+  background: rgb(31, 158, 162);
+  color: white;
+  box-shadow: none;
+}
 
 .navbar {
   background: rgb(31, 158, 162);
   border-bottom: 2px solid black;
-  padding-top: 10px;
-  height: 80px;
+  padding: 15px;
 }
 
 .box {
   padding: 10px;
   margin: 5px;
   background-color: rgb(255, 255, 255);
-  border-bottom: rgb(209, 233,239) 2px solid;
+  border-bottom: rgb(31, 158, 162) 2px solid;
 }
 
 nav button {
@@ -60,7 +100,7 @@ nav button {
 }
 
 .modal-header {
-  background: rgb(92, 176, 179);
+  background: rgb(31, 158, 162);
   color: white;
 }
 
@@ -172,4 +212,11 @@ footer {
   background-color: rgb(31, 158, 162);
   color: rgb(255, 255, 255);
   height:70px;
+}
+
+.footer {
+  color: white;
+  font-weight: lighter;
+  text-align: center;
+  padding-top: 15px;
 }
