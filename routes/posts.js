@@ -92,11 +92,11 @@ router.post('/:postId/comments/add', authorization, function(req, res, next) {
 });
 
 router.delete('/:postId', authorization, function(req, res, next) {
-  if(req.body.currentUser){
+  if(req.user.user_id){
     knex('posts')
     .where({
       post_id: req.params.postId,
-      user_id: req.body.currentUser
+      user_id: req.user.user_id
     })
     .first()
     .del()
@@ -114,11 +114,11 @@ router.delete('/:postId', authorization, function(req, res, next) {
 });
 
 router.delete('/comments/:commentId', authorization, function(req, res, next) {
-  if(req.body.currentUser){
+  if(req.user.user_id){
     knex('comments')
     .where({
       comment_id: req.params.commentId,
-      user_id: req.body.currentUser
+      user_id: req.user.user_id
     })
     .first()
     .del()
@@ -139,9 +139,19 @@ function authorization (req, res, next) {
   if(req.headers.authorization) {
     const token = req.headers.authorization.split(' ')[1];
     const payload = jwt.verify(token, process.env.JWT_SECRET);
-    req.body.currentUser = payload.user_id;
 
-    next();
+    knex('users')
+    .where({user_id: payload.user_id})
+    .then(function(user){
+      if(user.length === 0){
+        res.status(403).json({
+          error: ["Authorization error!"]
+        })
+      } else {
+        req.user = user;
+        next();
+      }
+    })
   } else {
     res.status(403).json({
       error: ["Authorization error!"]
