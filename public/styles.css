@@ -93,6 +93,7 @@ main {
 
 nav button {
   background: rgb(255, 255, 255);
+  outline: none;
 }
 
 #postModal, .comment-modal {
