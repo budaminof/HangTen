@@ -23,7 +23,7 @@
           <ng-pluralize count="post.comments.length"
             when="{'1': 'View Comment','other': 'View Comments'}">
           </ng-pluralize>
-          ( <span ng-bind="post.comments.length"></span> ) </span><span ng-show="vm.user.user_id" class="clickable" ng-click="vm.makeAComment(post)" aria-hidden="true" data-toggle="modal" data-target=".comment-modal"> | <span class="glyphicon glyphicon-pencil"></span>
+          (<span ng-bind="post.comments.length"></span>) </span><span ng-show="vm.user.user_id" class="clickable" ng-click="vm.makeAComment(post)" aria-hidden="true" data-toggle="modal" data-target=".comment-modal"> | <span class="glyphicon glyphicon-pencil"></span>
           Add a comment</span>
           <span ng-show="vm.showDelete(post)" class="addPost" ng-click="vm.deletePost(post)"> |
             <span class="glyphicon glyphicon-trash">

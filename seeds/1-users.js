@@ -4,18 +4,18 @@ exports.seed = function(knex, Promise) {
     knex('users').del(),
 
     knex('users').insert({
-      email: 'superadmin@example.com',
-      username: 'superadmin',
+      email: 'bud@example.com',
+      username: 'Bud',
       password:'$2a$10$SyMaBzAAHO3dwU9LUiEu4OmwXAgMqnnzgfgGJEJ777EOXEPHt7e6'
         }),
     knex('users').insert({
-      email: 'some@example.com',
-      username: 'some',
+      email: 'lin@example.com',
+      username: 'Lincoln',
       password:'$2a$10$SyMaBzAAHO3dwU9LUiEu4OmwXAgMqnnzgfgGJEJ777EOXEPHt7e6'
         }),
     knex('users').insert({
-      email: 'friend@example.com',
-      username: 'friend',
+      email: 'dave@example.com',
+      username: 'David',
       password:'$2a$10$SyMaBzAAHO3dwU9LUiEu4OmwXAgMqnnzgfgGJEJ777EOXEPHt7e6'
         })
   );

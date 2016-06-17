@@ -29,7 +29,7 @@ main {
 
 .navbar-default .navbar-nav>li>a:hover {
     color: white;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: lighter;
 }
 
@@ -41,7 +41,7 @@ main {
 }
 
 .navbar-default .navbar-toggle>.icon-bar {
-  background-color: rgb(31, 158, 162);
+  background-color: #2980B9;
 }
 
 @media (max-width: 690px) {
@@ -74,13 +74,14 @@ main {
 .navbar-default .navbar-nav>.open>a,
  .navbar-default .navbar-nav>.open>a:focus,
  .navbar-default .navbar-nav>.open>a:hover {
-  background: rgb(31, 158, 162);
+  background: #2980B9;
   color: white;
   box-shadow: none;
 }
 
 .navbar {
-  background: rgb(31, 158, 162);
+  /*background: rgb(31, 158, 162);*/
+  background: #2980B9;
   border-bottom: 2px solid black;
   padding: 15px;
 }
@@ -89,7 +90,7 @@ main {
   padding: 10px;
   margin: 5px;
   background-color: rgb(255, 255, 255);
-  border-bottom: rgb(31, 158, 162) 2px solid;
+  border-bottom: #2980B9 2px solid;
 }
 
 nav button {
@@ -102,7 +103,7 @@ nav button {
 }
 
 .modal-header {
-  background: rgb(31, 158, 162);
+  background: #2980B9;
   color: white;
 }
 
@@ -177,7 +178,7 @@ nav button {
 }
 
 .ng-move {
-  animation: zoomInUp .7s;
+  animation: fadeIn .8s;
 }
 
 .ng-move-stagger {
@@ -211,7 +212,7 @@ nav button {
 }
 
 footer {
-  background-color: rgb(31, 158, 162);
+  background-color: #2980B9;
   color: rgb(255, 255, 255);
   height:70px;
 }
